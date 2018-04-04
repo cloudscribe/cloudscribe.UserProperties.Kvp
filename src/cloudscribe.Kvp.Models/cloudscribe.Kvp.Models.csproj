@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>model classes for key/value storage</Description>
+    <VersionPrefix>1.0.1</VersionPrefix>
+    <Authors>Joe Audette</Authors>
+    <TargetFrameworks>netstandard1.6</TargetFrameworks>
+    <PackageTags>cloudscribe;kvp</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/joeaudette/cloudscribe/master/cloudscribe-icon-32.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/joeaudette/cloudscribe.Entropy/tree/master/solutions/cloudscribe.CustomRegistration.Kvp</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+
+</Project>
