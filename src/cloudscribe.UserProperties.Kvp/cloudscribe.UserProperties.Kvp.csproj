@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <Description>Configurable custom user properties for cloudscribe core using per tenant or global configuration based custom proprties with key/value storage</Description>
-    <VersionPrefix>2.1.2</VersionPrefix>
-    <AssemblyVersion>2.1.2</AssemblyVersion>
+    <VersionPrefix>3.0.0</VersionPrefix>
+    <AssemblyVersion>3.0.0</AssemblyVersion>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageTags>cloudscribe;userprofile;customization</PackageTags>
