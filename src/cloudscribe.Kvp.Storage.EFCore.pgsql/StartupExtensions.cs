@@ -18,12 +18,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddCloudscribeKvpEFCommon();
 
-            //services.AddEntityFrameworkNpgsql()
-            //        .AddDbContext<KvpDbContext>((serviceProvider, options) =>
-            //        options.UseNpgsql(connectionString)
-            //               .UseInternalServiceProvider(serviceProvider)
-            //               );
-
+            
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<KvpDbContext>(options =>
                     options.UseNpgsql(connectionString,
@@ -39,9 +34,13 @@ namespace Microsoft.Extensions.DependencyInjection
                         }
 
 
-                    }));
+                    }),
+                    optionsLifetime: ServiceLifetime.Singleton
+                    );
 
             services.AddScoped<IKvpDbContext, KvpDbContext>();
+
+            services.AddSingleton<IKvpDbContextFactory, KvpDbContextFactory>();
 
 
             return services;
