@@ -1,5 +1,5 @@
 ﻿using cloudscribe.Kvp.Storage.EFCore.Common;
-using cloudscribe.Kvp.Storage.EFCore.MySql;
+using cloudscribe.Kvp.Storage.EFCore.PostgreSql;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,20 +8,21 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class StartupExtensions
     {
-        public static IServiceCollection AddCloudscribeKvpEFStorageMySql(
+        public static IServiceCollection AddCloudscribeKvpPostgreSqlStorage(
             this IServiceCollection services,
             string connectionString,
             int maxConnectionRetryCount = 0,
             int maxConnectionRetryDelaySeconds = 30,
-            ICollection<int> transientSqlErrorNumbersToAdd = null
+            ICollection<string> transientErrorCodesToAdd = null
             )
         {
             services.AddCloudscribeKvpEFCommon();
 
-            services.AddEntityFrameworkMySql()
+            
+            services.AddEntityFrameworkNpgsql()
                 .AddDbContext<KvpDbContext>(options =>
-                    options.UseMySql(connectionString,
-                    mySqlOptionsAction: sqlOptions =>
+                    options.UseNpgsql(connectionString,
+                    npgsqlOptionsAction: sqlOptions =>
                     {
                         if (maxConnectionRetryCount > 0)
                         {
@@ -29,7 +30,7 @@ namespace Microsoft.Extensions.DependencyInjection
                             sqlOptions.EnableRetryOnFailure(
                                 maxRetryCount: maxConnectionRetryCount,
                                 maxRetryDelay: TimeSpan.FromSeconds(maxConnectionRetryDelaySeconds),
-                                errorNumbersToAdd: transientSqlErrorNumbersToAdd);
+                                errorCodesToAdd: transientErrorCodesToAdd);
                         }
 
 
@@ -37,12 +38,13 @@ namespace Microsoft.Extensions.DependencyInjection
                     optionsLifetime: ServiceLifetime.Singleton
                     );
 
-            
-
             services.AddScoped<IKvpDbContext, KvpDbContext>();
+
             services.AddSingleton<IKvpDbContextFactory, KvpDbContextFactory>();
+
 
             return services;
         }
+
     }
 }

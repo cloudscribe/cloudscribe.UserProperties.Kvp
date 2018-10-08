@@ -14,11 +14,12 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddCloudscribeKvpEFCommon();
 
             services.AddDbContext<KvpDbContext>((serviceProvider, options) =>
-                    options.UseSqlite(connectionString)
+                    options.UseSqlite(connectionString), 
+                    optionsLifetime: ServiceLifetime.Singleton
                     );
 
             services.AddScoped<IKvpDbContext, KvpDbContext>();
-
+            services.AddSingleton<IKvpDbContextFactory, KvpDbContextFactory>();
 
             return services;
         }

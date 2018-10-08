@@ -19,13 +19,7 @@ namespace Microsoft.Extensions.DependencyInjection
             )
         {
             services.AddCloudscribeKvpEFCommon();
-
-            //services.AddEntityFrameworkSqlServer()
-            //    .AddDbContext<KvpDbContext>((serviceProvider, options) =>
-            //    options.UseSqlServer(connectionString)
-            //           .UseInternalServiceProvider(serviceProvider)
-            //           );
-
+            
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<KvpDbContext>(options =>
                     options.UseSqlServer(connectionString,
@@ -45,11 +39,15 @@ namespace Microsoft.Extensions.DependencyInjection
                                 sqlOptions.UseRowNumberForPaging();
                             }
 
-                        }));
+                        }),
+                        optionsLifetime: ServiceLifetime.Singleton
+                        );
 
 
 
             services.AddScoped<IKvpDbContext, KvpDbContext>();
+
+            services.AddSingleton<IKvpDbContextFactory, KvpDbContextFactory>();
 
 
             return services;

@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2017-07-13
-// Last Modified:			2017-07-13
+// Last Modified:			2018-10-08
 // 
 
 using cloudscribe.Kvp.Models;
@@ -16,12 +16,12 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
 {
     public class KvpItemCommands : IKvpItemCommands
     {
-        public KvpItemCommands(IKvpDbContext dbContext)
+        public KvpItemCommands(IKvpDbContextFactory contextFactory)
         {
-            _db = dbContext;
+            _contextFactory = contextFactory;
         }
 
-        private IKvpDbContext _db;
+        private readonly IKvpDbContextFactory _contextFactory;
 
         public async Task Create(
             string projectId,
@@ -32,12 +32,15 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
             if (kvp == null) { throw new ArgumentException("kvp can't be null"); }
             var kvpItem = KvpItem.FromIKvpItem(kvp);
 
-            _db.KvpItems.Add(kvpItem);
+            using (var db = _contextFactory.Create())
+            {
+                db.KvpItems.Add(kvpItem);
 
-            var rowsAffected =
-                await _db.SaveChangesAsync(cancellationToken)
-                .ConfigureAwait(false);
-
+                var rowsAffected =
+                    await db.SaveChangesAsync(cancellationToken)
+                    .ConfigureAwait(false);
+            }
+            
         }
 
         public async Task Update(
@@ -49,16 +52,19 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
             if (kvp == null) { throw new ArgumentException("kvp can't be null"); }
             var kvpItem = KvpItem.FromIKvpItem(kvp);
 
-            bool tracking = _db.ChangeTracker.Entries<KvpItem>().Any(x => x.Entity.Id == kvpItem.Id);
-            if (!tracking)
+            using (var db = _contextFactory.Create())
             {
-                _db.KvpItems.Update(kvpItem);
+                bool tracking = db.ChangeTracker.Entries<KvpItem>().Any(x => x.Entity.Id == kvpItem.Id);
+                if (!tracking)
+                {
+                    db.KvpItems.Update(kvpItem);
+                }
+
+                var rowsAffected =
+                    await db.SaveChangesAsync(cancellationToken)
+                    .ConfigureAwait(false);
             }
-
-            var rowsAffected =
-                await _db.SaveChangesAsync(cancellationToken)
-                .ConfigureAwait(false);
-
+            
         }
 
         public async Task Delete(
@@ -67,16 +73,20 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
             CancellationToken cancellationToken = default(CancellationToken)
             )
         {
-            var itemToRemove = await _db.KvpItems.SingleOrDefaultAsync(
-                x => x.Id == id 
-                , cancellationToken)
-                .ConfigureAwait(false);
+            using (var db = _contextFactory.Create())
+            {
+                var itemToRemove = await db.KvpItems.SingleOrDefaultAsync(
+                    x => x.Id == id
+                    , cancellationToken)
+                    .ConfigureAwait(false);
 
-            if (itemToRemove == null) throw new InvalidOperationException("KvpItem not found");
+                if (itemToRemove == null) throw new InvalidOperationException("KvpItem not found");
 
-            _db.KvpItems.Remove(itemToRemove);
-            var rowsAffected = await _db.SaveChangesAsync(cancellationToken)
-                .ConfigureAwait(false);
+                db.KvpItems.Remove(itemToRemove);
+                var rowsAffected = await db.SaveChangesAsync(cancellationToken)
+                    .ConfigureAwait(false);
+            }
+
         }
 
 

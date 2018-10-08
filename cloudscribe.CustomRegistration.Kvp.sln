@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.MySql", "src\cloudscribe.Kvp.Storage.EFCore.MySql\cloudscribe.Kvp.Storage.EFCore.MySql.csproj", "{9ADE3018-F469-4DE3-AB06-3CEFE210A248}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Storage.EFCore.SQLite", "src\cloudscribe.Kvp.Storage.EFCore.SQLite\cloudscribe.Kvp.Storage.EFCore.SQLite.csproj", "{182B4BEB-ED4E-4B94-9CA4-BA53E106C113}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.SQLite", "src\cloudscribe.Kvp.Storage.EFCore.SQLite\cloudscribe.Kvp.Storage.EFCore.SQLite.csproj", "{182B4BEB-ED4E-4B94-9CA4-BA53E106C113}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Storage.EFCore.PostgreSql", "src\cloudscribe.Kvp.Storage.EFCore.PostgreSql\cloudscribe.Kvp.Storage.EFCore.PostgreSql.csproj", "{FFC13FA0-E7F9-4FF1-95F0-5F564D336553}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{182B4BEB-ED4E-4B94-9CA4-BA53E106C113}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{182B4BEB-ED4E-4B94-9CA4-BA53E106C113}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{182B4BEB-ED4E-4B94-9CA4-BA53E106C113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFC13FA0-E7F9-4FF1-95F0-5F564D336553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFC13FA0-E7F9-4FF1-95F0-5F564D336553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFC13FA0-E7F9-4FF1-95F0-5F564D336553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFC13FA0-E7F9-4FF1-95F0-5F564D336553}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{C7E1ADD6-27BB-4E34-8AE4-6542C5CE1B37} = {E59452A1-F662-4583-8D8E-96F333AB4265}
 		{9ADE3018-F469-4DE3-AB06-3CEFE210A248} = {E59452A1-F662-4583-8D8E-96F333AB4265}
 		{182B4BEB-ED4E-4B94-9CA4-BA53E106C113} = {E59452A1-F662-4583-8D8E-96F333AB4265}
+		{FFC13FA0-E7F9-4FF1-95F0-5F564D336553} = {E59452A1-F662-4583-8D8E-96F333AB4265}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61943093-C69E-4E46-9530-F2C44A2F6F89}
