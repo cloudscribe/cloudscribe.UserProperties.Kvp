@@ -16,11 +16,9 @@ namespace cloudscribe.Kvp.Storage.EFCore.pgsql
         {
             base.OnModelCreating(modelBuilder);
 
-            IKvpTableNames tableNames = this.GetService<IKvpTableNames>();
-            if (tableNames == null)
-            {
-                tableNames = new KvpTableNames();
-            }
+            
+            var tableNames = new KvpTableNames();
+           
 
             modelBuilder.Entity<KvpItem>(entity =>
             {
