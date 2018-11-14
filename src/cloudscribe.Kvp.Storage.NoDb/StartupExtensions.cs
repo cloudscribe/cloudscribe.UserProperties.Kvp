@@ -1,12 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using NoDb;
+﻿using cloudscribe.Kvp.Models;
 using cloudscribe.Kvp.Storage.NoDb;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using cloudscribe.Kvp.Models;
+using cloudscribe.Versioning;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using NoDb;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -17,8 +14,8 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddNoDb<KvpItem>();
             services.TryAddScoped<IKvpItemQueries, KvpItemQueries>();
             services.TryAddScoped<IKvpItemCommands, KvpItemCommands>();
+            services.AddScoped<IVersionProvider, VersionProvider>();
 
-            
 
             return services;
         }

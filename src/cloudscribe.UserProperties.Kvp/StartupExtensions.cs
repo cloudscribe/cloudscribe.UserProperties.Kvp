@@ -5,6 +5,7 @@ using cloudscribe.UserProperties.Services;
 using cloudscribe.UserProperties.Kvp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using cloudscribe.Versioning;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -20,6 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddScoped<IHandleCustomRegistration, KvpRegistrationHandler>();
             services.TryAddScoped<IHandleCustomUserInfo, KvpUserInfoHandler>();
             services.TryAddScoped<IHandleCustomUserInfoAdmin, KvpUserInfoAdminHandler>();
+            services.AddScoped<IVersionProvider, VersionProvider>();
 
 
             return services;

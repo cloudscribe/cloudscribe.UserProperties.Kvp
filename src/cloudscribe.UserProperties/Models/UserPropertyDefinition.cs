@@ -5,13 +5,9 @@
 // Last Modified:			2017-07-08
 // 
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel.DataAnnotations;
 using cloudscribe.Web.Common.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace cloudscribe.UserProperties.Models
 {

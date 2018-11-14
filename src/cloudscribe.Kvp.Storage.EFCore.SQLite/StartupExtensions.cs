@@ -1,5 +1,6 @@
 ﻿using cloudscribe.Kvp.Storage.EFCore.Common;
 using cloudscribe.Kvp.Storage.EFCore.SQLite;
+using cloudscribe.Versioning;
 using Microsoft.EntityFrameworkCore;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -20,6 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddScoped<IKvpDbContext, KvpDbContext>();
             services.AddSingleton<IKvpDbContextFactory, KvpDbContextFactory>();
+            services.AddScoped<IVersionProvider, VersionProvider>();
 
             return services;
         }
