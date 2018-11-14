@@ -1,5 +1,6 @@
 ﻿using cloudscribe.Kvp.Storage.EFCore.Common;
 using cloudscribe.Kvp.Storage.EFCore.PostgreSql;
+using cloudscribe.Versioning;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -39,9 +40,8 @@ namespace Microsoft.Extensions.DependencyInjection
                     );
 
             services.AddScoped<IKvpDbContext, KvpDbContext>();
-
             services.AddSingleton<IKvpDbContextFactory, KvpDbContextFactory>();
-
+            services.AddScoped<IVersionProvider, VersionProvider>();
 
             return services;
         }
