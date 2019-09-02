@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>NoDb storage for cloudscribe key/value models. NoDb storage is only recommended for small sites.</Description>
-    <VersionPrefix>3.0.3</VersionPrefix>
+    <Version>4.0.0-preview20190902</Version>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageTags>cloudscribe;kvp;nodb</PackageTags>

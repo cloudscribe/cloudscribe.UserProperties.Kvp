@@ -15,19 +15,20 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Options;
 using cloudscribe.UserProperties.Models;
 using cloudscribe.UserProperties.Services;
+using Microsoft.Extensions.Hosting;
 
 namespace WebApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
            
             Configuration = configuration;
             Environment = env;
         }
 
-        public IHostingEnvironment Environment { get; set; }
+        public IWebHostEnvironment Environment { get; set; }
         public IConfiguration Configuration { get; }
 
         public bool SslIsAvailable { get; set; }
@@ -125,6 +126,8 @@ namespace WebApp
                 options.LowercaseUrls = true;
             });
 
+            services.AddControllersWithViews();
+
             services.AddMvc()
                 .AddRazorOptions(options =>
                 {
@@ -137,7 +140,7 @@ namespace WebApp
         // ConfigureServices
         public void Configure(
             IApplicationBuilder app,
-            IHostingEnvironment env,
+            IWebHostEnvironment env,
             ILoggerFactory loggerFactory,
             IOptions<cloudscribe.Core.Models.MultiTenantOptions> multiTenantOptionsAccessor,
             IServiceProvider serviceProvider,
@@ -168,50 +171,55 @@ namespace WebApp
                     multiTenantOptions,
                     SslIsAvailable);
 
-            UseMvc(app, multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName);
-            
+            var useFolders = multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName;
 
-        }
-
-        private void UseMvc(IApplicationBuilder app, bool useFolders)
-        {
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.AddCloudscribeFileManagerRoutes();
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.AddCloudscribeFileManagerRoutes();
 
                 if (useFolders)
                 {
-					routes.MapRoute(
+                    endpoints.MapControllerRoute(
                        name: "foldererrorhandler",
-                       template: "{sitefolder}/oops/error/{statusCode?}",
+                       pattern: "{sitefolder}/oops/error/{statusCode?}",
                        defaults: new { controller = "Oops", action = "Error" },
                        constraints: new { name = new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint() }
                     );
-					
-                    routes.MapRoute(
+
+                    endpoints.MapControllerRoute(
                         name: "folderdefault",
-                        template: "{sitefolder}/{controller}/{action}/{id?}",
+                        pattern: "{sitefolder}/{controller}/{action}/{id?}",
                         defaults: new { controller = "Home", action = "Index" },
                         constraints: new { name = new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint() }
                         );
 
                 }
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "errorhandler",
-                    template: "oops/error/{statusCode?}",
+                    pattern: "oops/error/{statusCode?}",
                     defaults: new { controller = "Oops", action = "Error" }
                     );
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}"
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
                     );
 
 
 
             });
+
+            
+
+
         }
+
+       
 
         private void ConfigureAuthPolicy(IServiceCollection services)
         {
@@ -224,6 +232,13 @@ namespace WebApp
 
                 options.AddPolicy(
                     "FileManagerPolicy",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Administrators", "Content Administrators");
+                    });
+
+                options.AddPolicy(
+                    "FileUploadPolicy",
                     authBuilder =>
                     {
                         authBuilder.RequireRole("Administrators", "Content Administrators");

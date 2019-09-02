@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>model classes for key/value storage</Description>
-    <VersionPrefix>3.0.2</VersionPrefix>
+    <Version>4.0.0-preview20190902</Version>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netstandard1.6</TargetFrameworks>
     <PackageTags>cloudscribe;kvp</PackageTags>

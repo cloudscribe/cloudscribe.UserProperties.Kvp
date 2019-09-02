@@ -2,10 +2,9 @@
 
   <PropertyGroup>
     <Description>Configurable custom user properties for cloudscribe core using per tenant or global configuration based custom proprties with key/value storage</Description>
-    <VersionPrefix>3.0.3</VersionPrefix>
-    <AssemblyVersion>3.0.3</AssemblyVersion>
+    <Version>4.0.0-preview20190902</Version>
     <Authors>Joe Audette</Authors>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.0</TargetFrameworks>
     <PackageTags>cloudscribe;userprofile;customization</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/joeaudette/cloudscribe/master/cloudscribe-icon-32.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/joeaudette/cloudscribe.Entropy/tree/master/solutions/cloudscribe.CustomRegistration.Kvp</PackageProjectUrl>
@@ -15,16 +14,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="cloudscribe.Core.Models" Version="3.0.9" />
-    <PackageReference Include="cloudscribe.Core.Identity" Version="3.0.8" />
-    <PackageReference Include="cloudscribe.Core.Web" Version="3.1.28" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="cloudscribe.Core.Models" Version="4.0.0-*" />
+    <PackageReference Include="cloudscribe.Core.Identity" Version="4.0.0-*" />
+    <PackageReference Include="cloudscribe.Core.Web" Version="4.0.0-*" />
     <PackageReference Include="cloudscribe.Versioning" Version="1.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
+
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.0.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="3.0.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.0.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.0.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.0.0-*" />
 
   </ItemGroup>
 

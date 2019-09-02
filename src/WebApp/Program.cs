@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace WebApp
 {
@@ -16,7 +17,7 @@ namespace WebApp
     {
         public static void Main(string[] args)
         {
-            var host = BuildWebHost(args);
+            var host = CreateHostBuilder(args).Build();
             var config = host.Services.GetRequiredService<IConfiguration>();
             
             using (var scope = host.Services.CreateScope())
@@ -36,7 +37,7 @@ namespace WebApp
             }
 
             var loggerFactory = host.Services.GetRequiredService<ILoggerFactory>();
-            var env = host.Services.GetRequiredService<IHostingEnvironment>();
+            var env = host.Services.GetRequiredService<IWebHostEnvironment>();
             ConfigureLogging(env, loggerFactory, host.Services);
 
             host.Run();
@@ -67,7 +68,7 @@ namespace WebApp
         }
 
         private static void ConfigureLogging(
-            IHostingEnvironment env,
+            IWebHostEnvironment env,
             ILoggerFactory loggerFactory,
             IServiceProvider serviceProvider
             )
@@ -109,20 +110,27 @@ namespace WebApp
             loggerFactory.AddDbLogger(serviceProvider, logFilter);
         }
 
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+           Host.CreateDefaultBuilder(args)
+               .ConfigureWebHostDefaults(webBuilder =>
+               {
+                   webBuilder.UseStartup<Startup>();
+               });
+
 
         //https://joonasw.net/view/aspnet-core-2-configuration-changes
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((builderContext, config) =>
-                {
-                    config.AddJsonFile("app-userproperties.json", optional: true, reloadOnChange: true);
-                })
-                .UseStartup<Startup>()
-                .Build();
+        //public static IWebHost BuildWebHost(string[] args) =>
+        //    WebHost.CreateDefaultBuilder(args)
+        //        .ConfigureAppConfiguration((builderContext, config) =>
+        //        {
+        //            config.AddJsonFile("app-userproperties.json", optional: true, reloadOnChange: true);
+        //        })
+        //        .UseStartup<Startup>()
+        //        .Build();
 
 
-       
+
 
     }
 }
