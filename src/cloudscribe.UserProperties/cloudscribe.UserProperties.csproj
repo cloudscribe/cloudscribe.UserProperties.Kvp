@@ -2,30 +2,34 @@
 
   <PropertyGroup>
     <Description>Models for custom user properties that can be configured per tenant for cloudscribe core customization</Description>
-    <Version>4.0.0-preview20190902</Version>
+    <Version>4.0.0</Version>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netcoreapp3.0</TargetFrameworks>
     <PackageTags>cloudscribe;userprofile;customization</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/joeaudette/cloudscribe/master/cloudscribe-icon-32.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/joeaudette/cloudscribe.Entropy/tree/master/solutions/cloudscribe.CustomRegistration.Kvp</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
   
    <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="cloudscribe.Core.Models" Version="4.0.0-*" />
-    <PackageReference Include="cloudscribe.Web.Common" Version="4.0.0-*" />
+    <PackageReference Include="cloudscribe.Core.Models" Version="4.0.0" />
+    <PackageReference Include="cloudscribe.Web.Common" Version="4.0.0" />
 
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.0.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="3.0.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.0.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="3.0.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.0.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.0.0" />
    
   </ItemGroup>
   

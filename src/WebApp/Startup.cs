@@ -64,7 +64,7 @@ namespace WebApp
 
             //services.AddCloudscribeCoreNoDbStorage();
             //services.AddCloudscribeLoggingNoDbStorage(Configuration);
-            AddDataStorageServices(services);
+            AddDataStorageServices(services, Configuration);
             services.AddCloudscribeLogging();
             services.AddCloudscribeCoreMvc(Configuration);
 
@@ -258,7 +258,7 @@ namespace WebApp
         }
 
 
-        private void AddDataStorageServices(IServiceCollection services)
+        private void AddDataStorageServices(IServiceCollection services, IConfiguration config)
         {
             services.AddScoped<cloudscribe.Core.Models.Setup.ISetupTask, cloudscribe.Core.Web.Components.EnsureInitialDataSetupTask>();
 
@@ -281,8 +281,8 @@ namespace WebApp
                     {
                         case "pgsql":
                             var pgConnection = Configuration.GetConnectionString("PostgreSqlEntityFrameworkConnectionString");
-                            services.AddCloudscribeCoreEFStoragePostgreSql(pgConnection);
-                            services.AddCloudscribeLoggingEFStoragePostgreSql(pgConnection);
+                            services.AddCloudscribeCorePostgreSqlStorage(pgConnection);
+                            services.AddCloudscribeLoggingPostgreSqlStorage(pgConnection);
                             services.AddCloudscribeKvpEFStoragePostgreSql(pgConnection);
                             
 
@@ -296,6 +296,19 @@ namespace WebApp
                             
 
                             break;
+
+                        case "sqlite":
+
+                            var dbName = config.GetConnectionString("SQLiteDbName");
+                            var dbPath = Path.Combine(Environment.ContentRootPath, dbName);
+                            var slConnection = $"Data Source={dbPath}";
+
+                            services.AddCloudscribeCoreEFStorageSQLite(slConnection);
+                            services.AddCloudscribeLoggingEFStorageSQLite(slConnection);
+                            services.AddCloudscribeKvpEFStorageSQLite(slConnection);
+
+                            break;
+
 
                         case "MSSQL":
                         default:
