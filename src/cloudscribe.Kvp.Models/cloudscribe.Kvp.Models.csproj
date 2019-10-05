@@ -2,18 +2,22 @@
 
   <PropertyGroup>
     <Description>model classes for key/value storage</Description>
-    <VersionPrefix>3.0.2</VersionPrefix>
+    <Version>4.0.0</Version>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netstandard1.6</TargetFrameworks>
     <PackageTags>cloudscribe;kvp</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/joeaudette/cloudscribe/master/cloudscribe-icon-32.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/joeaudette/cloudscribe.Entropy/tree/master/solutions/cloudscribe.CustomRegistration.Kvp</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 
     <RepositoryUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
 
 </Project>

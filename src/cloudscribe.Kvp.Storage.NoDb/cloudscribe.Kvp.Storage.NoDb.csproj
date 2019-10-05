@@ -2,16 +2,20 @@
 
   <PropertyGroup>
     <Description>NoDb storage for cloudscribe key/value models. NoDb storage is only recommended for small sites.</Description>
-    <VersionPrefix>3.0.3</VersionPrefix>
+    <Version>4.0.0</Version>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageTags>cloudscribe;kvp;nodb</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/joeaudette/cloudscribe/master/cloudscribe-icon-32.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/joeaudette/cloudscribe.Entropy/tree/master/solutions/cloudscribe.CustomRegistration.Kvp</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="cloudscribe.Versioning" Version="1.0.0" />
