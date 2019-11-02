@@ -121,12 +121,19 @@ namespace WebApp
             });
 
             // it is recommended to use lower case urls
-            services.AddRouting(options =>
-            {
-                options.LowercaseUrls = true;
-            });
+            //services.AddRouting(options =>
+            //{
+            //    options.LowercaseUrls = true;
+            //});
 
-            services.AddControllersWithViews();
+            //services.AddControllersWithViews();
+
+            services.Configure<MvcOptions>(options =>
+            {
+                options.EnableEndpointRouting = false;
+
+                
+            });
 
             services.AddMvc()
                 .AddRazorOptions(options =>
@@ -157,7 +164,7 @@ namespace WebApp
                 app.UseExceptionHandler("/oops/Error");
             }
 
-            app.UseForwardedHeaders();
+            
             app.UseStaticFiles();
             
             //app.UseSession();
@@ -173,48 +180,87 @@ namespace WebApp
 
             var useFolders = multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName;
 
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(routes =>
             {
-                //endpoints.MapControllerRoute(
-                //    name: "default",
-                //    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.AddCloudscribeFileManagerRoutes();
+
+                routes.AddCloudscribeFileManagerRoutes();
 
                 if (useFolders)
                 {
-                    endpoints.MapControllerRoute(
+                    routes.MapRoute(
                        name: "foldererrorhandler",
-                       pattern: "{sitefolder}/oops/error/{statusCode?}",
+                       template: "{sitefolder}/oops/error/{statusCode?}",
                        defaults: new { controller = "Oops", action = "Error" },
                        constraints: new { name = new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint() }
                     );
 
-                    endpoints.MapControllerRoute(
+                    routes.MapRoute(
                         name: "folderdefault",
-                        pattern: "{sitefolder}/{controller}/{action}/{id?}",
+                        template: "{sitefolder}/{controller}/{action}/{id?}",
                         defaults: new { controller = "Home", action = "Index" },
                         constraints: new { name = new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint() }
                         );
 
                 }
 
-                endpoints.MapControllerRoute(
+                routes.MapRoute(
                     name: "errorhandler",
-                    pattern: "oops/error/{statusCode?}",
+                    template: "oops/error/{statusCode?}",
                     defaults: new { controller = "Oops", action = "Error" }
                     );
 
-                endpoints.MapControllerRoute(
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                    template: "{controller=Home}/{action=Index}/{id?}"
                     );
 
 
 
             });
 
-            
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    //endpoints.MapControllerRoute(
+            //    //    name: "default",
+            //    //    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            //    endpoints.AddCloudscribeFileManagerRoutes();
+
+            //    if (useFolders)
+            //    {
+            //        endpoints.MapControllerRoute(
+            //           name: "foldererrorhandler",
+            //           pattern: "{sitefolder}/oops/error/{statusCode?}",
+            //           defaults: new { controller = "Oops", action = "Error" },
+            //           constraints: new { name = new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint() }
+            //        );
+
+            //        endpoints.MapControllerRoute(
+            //            name: "folderdefault",
+            //            pattern: "{sitefolder}/{controller}/{action}/{id?}",
+            //            defaults: new { controller = "Home", action = "Index" },
+            //            constraints: new { name = new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint() }
+            //            );
+
+            //    }
+
+            //    endpoints.MapControllerRoute(
+            //        name: "errorhandler",
+            //        pattern: "oops/error/{statusCode?}",
+            //        defaults: new { controller = "Oops", action = "Error" }
+            //        );
+
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}"
+            //        );
+
+
+
+            //});
+
+
 
 
         }
