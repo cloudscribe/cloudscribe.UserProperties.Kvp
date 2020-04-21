@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E59452A1-F662-4583-8D8E-96F333AB4265}"
 EndProject
@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.SQLite", "src\cloudscribe.Kvp.Storage.EFCore.SQLite\cloudscribe.Kvp.Storage.EFCore.SQLite.csproj", "{182B4BEB-ED4E-4B94-9CA4-BA53E106C113}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Storage.EFCore.PostgreSql", "src\cloudscribe.Kvp.Storage.EFCore.PostgreSql\cloudscribe.Kvp.Storage.EFCore.PostgreSql.csproj", "{FFC13FA0-E7F9-4FF1-95F0-5F564D336553}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.PostgreSql", "src\cloudscribe.Kvp.Storage.EFCore.PostgreSql\cloudscribe.Kvp.Storage.EFCore.PostgreSql.csproj", "{FFC13FA0-E7F9-4FF1-95F0-5F564D336553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sourceDev.WebApp", "src\sourceDev.WebApp\sourceDev.WebApp.csproj", "{D6198F2F-BC30-4DD8-AC14-A13FE8B8F36D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{FFC13FA0-E7F9-4FF1-95F0-5F564D336553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFC13FA0-E7F9-4FF1-95F0-5F564D336553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFC13FA0-E7F9-4FF1-95F0-5F564D336553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6198F2F-BC30-4DD8-AC14-A13FE8B8F36D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6198F2F-BC30-4DD8-AC14-A13FE8B8F36D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6198F2F-BC30-4DD8-AC14-A13FE8B8F36D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6198F2F-BC30-4DD8-AC14-A13FE8B8F36D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +101,7 @@ Global
 		{9ADE3018-F469-4DE3-AB06-3CEFE210A248} = {E59452A1-F662-4583-8D8E-96F333AB4265}
 		{182B4BEB-ED4E-4B94-9CA4-BA53E106C113} = {E59452A1-F662-4583-8D8E-96F333AB4265}
 		{FFC13FA0-E7F9-4FF1-95F0-5F564D336553} = {E59452A1-F662-4583-8D8E-96F333AB4265}
+		{D6198F2F-BC30-4DD8-AC14-A13FE8B8F36D} = {E59452A1-F662-4583-8D8E-96F333AB4265}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61943093-C69E-4E46-9530-F2C44A2F6F89}

@@ -256,13 +256,7 @@ namespace WebApp
             //        pattern: "{controller=Home}/{action=Index}/{id?}"
             //        );
 
-
-
             //});
-
-
-
-
         }
 
        

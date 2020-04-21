@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="icon.png" Pack="true" PackagePath="\"/>
+    <None Include="icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +24,7 @@
   <ItemGroup>
     <PackageReference Include="cloudscribe.Core.Models" Version="4.0.0" />
     <PackageReference Include="cloudscribe.Core.Identity" Version="4.0.0" />
-    <PackageReference Include="cloudscribe.Core.Web" Version="4.0.0" />
+    <PackageReference Include="cloudscribe.Core.Web" Version="4.0.6" />
     <PackageReference Include="cloudscribe.Versioning" Version="1.0.0" />
 
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.0.0" />
