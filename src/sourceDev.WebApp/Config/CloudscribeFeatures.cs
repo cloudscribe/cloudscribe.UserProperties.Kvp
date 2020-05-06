@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using cloudscribe.UserProperties.Models;
+using cloudscribe.UserProperties.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -114,8 +115,14 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddCloudscribeLogging(config);
 
+            services.Configure<ProfilePropertySetContainer>(config.GetSection("ProfilePropertySetContainer"));
+            services.AddScoped<TenantProfileOptionsResolver>();
+
+            services.AddCloudscribeKvpUserProperties();
+
             services.AddScoped<cloudscribe.Web.Navigation.INavigationNodePermissionResolver, cloudscribe.Web.Navigation.NavigationNodePermissionResolver>();
             services.AddScoped<cloudscribe.Web.Navigation.INavigationNodePermissionResolver, cloudscribe.SimpleContent.Web.Services.PagesNavigationNodePermissionResolver>();
+            
             services.AddCloudscribeCoreMvc(config);
             services.AddCloudscribeCoreIntegrationForSimpleContent(config);
             services.AddSimpleContentMvc(config);
@@ -124,8 +131,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddMetaWeblogForSimpleContent(config.GetSection("MetaWeblogApiOptions"));
             services.AddSimpleContentRssSyndiction();
 
-            services.Configure<ProfilePropertySetContainer>(config.GetSection("ProfilePropertySetContainer"));
-            services.AddCloudscribeKvpUserProperties();
+
 
             return services;
         }
