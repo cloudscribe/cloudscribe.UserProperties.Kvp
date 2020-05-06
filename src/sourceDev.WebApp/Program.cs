@@ -16,12 +16,14 @@ namespace sourceDev.WebApp
             var hostBuilder = CreateHostBuilder(args);
             var host = hostBuilder.Build();
 
+            var config = host.Services.GetRequiredService<IConfiguration>();
+            
             using (var scope = host.Services.CreateScope())
             {
-                var scopedServices = scope.ServiceProvider;
+                var scopedServices = scope.ServiceProvider; 
                 try
                 {
-                    EnsureDataStorageIsReady(scopedServices);
+                    EnsureDataStorageIsReady(config, scopedServices);
 
                 }
                 catch (Exception ex)
@@ -33,7 +35,7 @@ namespace sourceDev.WebApp
 
             var env = host.Services.GetRequiredService<IWebHostEnvironment>();
             var loggerFactory = host.Services.GetRequiredService<ILoggerFactory>();
-            var config = host.Services.GetRequiredService<IConfiguration>();
+
             ConfigureLogging(env, loggerFactory, host.Services, config);
 
             host.Run();
@@ -46,10 +48,23 @@ namespace sourceDev.WebApp
                     webBuilder.UseStartup<Startup>();
                 });
 
-        private static void EnsureDataStorageIsReady(IServiceProvider scopedServices)
+        private static void EnsureDataStorageIsReady(IConfiguration config, IServiceProvider scopedServices)
         {
-            CoreNoDbStartup.InitializeDataAsync(scopedServices).Wait();
-            KvpEFCoreStartup.InitializeDatabaseAsync(scopedServices).Wait();
+            var storage = config["DevOptions:DbPlatform"];
+            switch (storage)
+            {
+                case "NoDb":       
+                    CoreNoDbStartup.InitializeDataAsync(scopedServices).Wait();
+                    break;
+
+                case "ef":
+                default:
+                    LoggingEFStartup.InitializeDatabaseAsync(scopedServices).Wait();
+                    CoreEFStartup.InitializeDatabaseAsync(scopedServices).Wait();
+                    SimpleContentEFStartup.InitializeDatabaseAsync(scopedServices).Wait();
+                    KvpEFCoreStartup.InitializeDatabaseAsync(scopedServices).Wait();
+                    break;
+            }            
         }
 
         private static void ConfigureLogging(
@@ -88,7 +103,7 @@ namespace sourceDev.WebApp
                     minimumLevel = LogLevel.Warning;
                     break;
             }
-
+            
             // a customizable filter for logging
             // add exclusions in appsettings.json to remove noise in the logs
             bool logFilter(string loggerName, LogLevel logLevel)

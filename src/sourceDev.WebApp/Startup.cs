@@ -13,20 +13,20 @@ namespace sourceDev.WebApp
     public class Startup
     {
         public Startup(
-            IConfiguration configuration,
+            IConfiguration configuration, 
             IWebHostEnvironment env
             )
         {
             _configuration = configuration;
             _environment = env;
-
+            
             _sslIsAvailable = _configuration.GetValue<bool>("AppSettings:UseSsl");
         }
 
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _environment;
         private readonly bool _sslIsAvailable;
-
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -35,7 +35,7 @@ namespace sourceDev.WebApp
             // This is a custom extension method in Config/DataProtection.cs
             // These settings require your review to correctly configur data protection for your environment
             services.SetupDataProtection(_configuration, _environment);
-
+            
             services.AddAuthorization(options =>
             {
                 //https://docs.asp.net/en/latest/security/authorization/policies.html
@@ -49,8 +49,8 @@ namespace sourceDev.WebApp
             //// **** IMPORTANT *****
             // This is a custom extension method in Config/CloudscribeFeatures.cs
             services.SetupDataStorage(_configuration, _environment);
-
-
+            
+            
             //*** Important ***
             // This is a custom extension method in Config/CloudscribeFeatures.cs
             services.SetupCloudscribeFeatures(_configuration);
@@ -76,7 +76,7 @@ namespace sourceDev.WebApp
             // This is a custom extension method in Config/RoutingAndMvc.cs
             services.SetupMvc(_sslIsAvailable);
 
-            if (!_environment.IsDevelopment())
+            if(!_environment.IsDevelopment())
             {
                 var httpsPort = _configuration.GetValue<int>("AppSettings:HttpsPort");
                 services.AddHttpsRedirection(options =>
@@ -92,7 +92,7 @@ namespace sourceDev.WebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(
             IServiceProvider serviceProvider,
-            IApplicationBuilder app,
+            IApplicationBuilder app, 
             IWebHostEnvironment env,
             ILoggerFactory loggerFactory,
             IOptions<cloudscribe.Core.Models.MultiTenantOptions> multiTenantOptionsAccessor,
@@ -106,16 +106,16 @@ namespace sourceDev.WebApp
             else
             {
                 app.UseExceptionHandler("/oops/error");
-                if (_sslIsAvailable)
+                if(_sslIsAvailable)
                 {
                     app.UseHsts();
                 }
             }
-            if (_sslIsAvailable)
+            if(_sslIsAvailable)
             {
                 app.UseHttpsRedirection();
             }
-
+            
             app.UseStaticFiles();
             app.UseCloudscribeCommonStaticFiles();
             app.UseCookiePolicy();
@@ -130,22 +130,30 @@ namespace sourceDev.WebApp
 
 
 #pragma warning disable MVC1005 // Cannot use UseMvc with Endpoint Routing.
-            // workaround for 
-            //https://github.com/cloudscribe/cloudscribe.SimpleContent/issues/466
-            app.UseMvc(routes =>
-                       {
-                           routes.UseCustomRoutes();
-                       });
+// workaround for 
+//https://github.com/cloudscribe/cloudscribe.SimpleContent/issues/466
+ app.UseMvc(routes =>
+            {
+                var useFolders = multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName;
+                //*** IMPORTANT ***
+                // this is in Config/RoutingAndMvc.cs
+                // you can change or add routes there
+                routes.UseCustomRoutes(useFolders);
+            });
 #pragma warning restore MVC1005 // Cannot use UseMvc with Endpoint Routing.
 
-            //             app.UseEndpoints(endpoints =>
-            //             {
-            //                 endpoints.UseCustomRoutes();
-            //             });
-
+//             app.UseEndpoints(endpoints =>
+//             {
+//                 var useFolders = multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName;
+//                 //*** IMPORTANT ***
+//                 // this is in Config/RoutingAndMvc.cs
+//                 // you can change or add routes there
+//                 endpoints.UseCustomRoutes(useFolders);
+//             });
+   
         }
 
-
-
+        
+        
     }
 }

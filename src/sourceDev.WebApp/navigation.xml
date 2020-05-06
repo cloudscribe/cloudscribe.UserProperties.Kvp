@@ -149,6 +149,27 @@
                excludeFromSearchSiteMap="true"
                >
           <Children>
+              <NavNode key="SiteList"
+                       controller="SiteAdmin"
+                       action="SiteList"
+                       text="Site List"
+                       iconCssClass="fas fa-list-ul fa-fw"
+                       componentVisibility="breadcrumbs,childtree,parenttree"
+                       authorizationPolicy="ServerAdminPolicy"
+                       excludeFromSearchSiteMap="true">
+                  <Children>
+                      <NavNode key="NewSite"
+                               controller="SiteAdmin"
+                               action="NewSite"
+                               text="New Site"
+                               iconCssClass="fas fa-bolt fa-fw"
+                               componentVisibility="breadcrumbs"
+                               authorizationPolicy="ServerAdminPolicy"
+                               excludeFromSearchSiteMap="true">
+                          <Children />
+                      </NavNode>
+                  </Children>
+              </NavNode>
               <NavNode
                 key="BasicSettings"
                 controller="SiteAdmin"
