@@ -47,6 +47,7 @@ namespace cloudscribe.UserProperties.Kvp
                 case "Gender":
                 case "AvatarUrl":
                 case "WebSiteUrl":
+                case "DisplayName":
 
                     return true;
             }
