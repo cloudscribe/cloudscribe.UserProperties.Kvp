@@ -43,6 +43,10 @@ namespace sourceDev.WebApp
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((builderContext, config) =>
+                {
+                    config.AddJsonFile("app-userproperties.json", optional: true, reloadOnChange: true);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
