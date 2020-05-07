@@ -1,0 +1,156 @@
+﻿{
+
+  "ProfilePropertySetContainer": {
+    "PropertySets": [
+      {
+        "TenantId": "*",
+        "Properties": [
+          {
+            "Key": "FirstName",
+            "Label": "First Name",
+            "EditPartialViewName": "FormItemInputPartial",
+            "ReadOnlyPartialViewName": "FormItemLabelPartial",
+            "Tooltip": "",
+            "DefaultValue": "",
+            "CssClass": "firstname",
+            "IconCssClass": "far fa-user",
+            "IconOnLeft": "true",
+            "VisibleOnRegistration": "true",
+            "VisibleToUserOnProfile": "false",
+            "EditableByUserOnProfile": "false",
+            "VisibleOnAdminUserEdit": "false",
+            "EditableOnAdminUserEdit": "false",
+            "MaxLength": "100",
+            "MaxLengthErrorMessage": "First Name has a max length of 100 characters",
+            "Required": "true",
+            "RequiredErrorMessage": "First Name is required",
+            "RegexValidationExpression": "",
+            "RegexErrorMessage": "",
+            "Options": []
+          },
+          {
+            "Key": "LastName",
+            "Label": "Last Name",
+            "EditPartialViewName": "FormItemInputPartial",
+            "ReadOnlyPartialViewName": "FormItemLabelPartial",
+            "Tooltip": "",
+            "DefaultValue": "",
+            "CssClass": "lastname",
+            "IconCssClass": "far fa-user",
+            "IconOnLeft": "true",
+            "VisibleOnRegistration": "true",
+            "VisibleToUserOnProfile": "false",
+            "EditableByUserOnProfile": "false",
+            "VisibleOnAdminUserEdit": "false",
+            "EditableOnAdminUserEdit": "false",
+            "MaxLength": "100",
+            "MaxLengthErrorMessage": "Last Name has a max length of 100 characters",
+            "Required": "true",
+            "RequiredErrorMessage": "Last Name is required",
+            "RegexValidationExpression": "",
+            "RegexErrorMessage": "",
+            "Options": []
+          },
+
+          {
+            "Key": "DateOfBirth",
+            "Label": "Date of Birth",
+            "EditPartialViewName": "FormItemDOBPartial",
+            "ReadOnlyPartialViewName": "FormItemLabelPartial",
+            "Tooltip": "",
+            "DefaultValue": "",
+            "CssClass": "dp",
+            "IconCssClass": "fa fa-calendar",
+            "IconOnLeft": "true",
+            "VisibleOnRegistration": "true",
+            "VisibleToUserOnProfile": "false",
+            "EditableByUserOnProfile": "false",
+            "VisibleOnAdminUserEdit": "false",
+            "EditableOnAdminUserEdit": "false",
+            "MaxLength": "30",
+            "MaxLengthErrorMessage": "Date of Birth has a max length of 30 characters",
+            "Required": "true",
+            "RequiredErrorMessage": "Date of Birth is required!",
+            "RegexValidationExpression": "",
+            "RegexErrorMessage": "",
+            "Options": []
+          },
+
+          {
+            "Key": "MembershipNo",
+            "Label": "Membership Number",
+            "EditPartialViewName": "FormItemInputPartial",
+            "ReadOnlyPartialViewName": "FormItemLabelPartial",
+            "Tooltip": "",
+            "DefaultValue": "",
+            "CssClass": "memno",
+            "IconCssClass": "fas fa-hashtag",
+            "IconOnLeft": "true",
+            "VisibleOnRegistration": "true",
+            "VisibleToUserOnProfile": "true",
+            "EditableByUserOnProfile": "false",
+            "VisibleOnAdminUserEdit": "true",
+            "EditableOnAdminUserEdit": "true",
+            "MaxLength": "30",
+            "MaxLengthErrorMessage": "Membership Number has a max length of 30 characters",
+            "Required": "true",
+            "RequiredErrorMessage": "Membership Number is required",
+            "RegexValidationExpression": "",
+            "RegexErrorMessage": "",
+            "Options": []
+          },
+
+          {
+            "Key": "PostCode",
+            "Label": "Post Code",
+            "EditPartialViewName": "FormItemInputPartial",
+            "ReadOnlyPartialViewName": "FormItemLabelPartial",
+            "Tooltip": "",
+            "DefaultValue": "",
+            "CssClass": "memno",
+            "IconCssClass": "far fa-envelope",
+            "IconOnLeft": "true",
+            "VisibleOnRegistration": "true",
+            "VisibleToUserOnProfile": "true",
+            "EditableByUserOnProfile": "true",
+            "VisibleOnAdminUserEdit": "true",
+            "EditableOnAdminUserEdit": "true",
+            "MaxLength": "10",
+            "MaxLengthErrorMessage": "Post Code has a max length of 10 characters",
+            "Required": "true",
+            "RequiredErrorMessage": "Post Code is required",
+            "RegexValidationExpression": "",
+            "RegexErrorMessage": "",
+            "Options": []
+          },
+          
+          {
+            "Key": "DisplayName",
+            "Label": "Display Name",
+            "EditPartialViewName": "FormItemInputPartial",
+            "ReadOnlyPartialViewName": "FormItemLabelPartial",
+            "Tooltip": "",
+            "DefaultValue": "",
+            "CssClass": "displayname",
+            "IconCssClass": "far fa-eye",
+            "IconOnLeft": "true",
+            "VisibleOnRegistration": "true",
+            "VisibleToUserOnProfile": "true",
+            "EditableByUserOnProfile": "true",
+            "VisibleOnAdminUserEdit": "false",
+            "EditableOnAdminUserEdit": "false",
+            "MaxLength": "100",
+            "MaxLengthErrorMessage": "Display Name has a max length of 100 characters",
+            "Required": "true",
+            "RequiredErrorMessage": "Display Name is required",
+            "RegexValidationExpression": "",
+            "RegexErrorMessage": "",
+            "Options": []
+          }
+
+        ]
+      }
+    ]
+  }
+
+}
