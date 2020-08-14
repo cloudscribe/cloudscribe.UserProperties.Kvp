@@ -34,12 +34,10 @@ namespace Microsoft.Extensions.DependencyInjection
                                     maxRetryDelay: TimeSpan.FromSeconds(maxConnectionRetryDelaySeconds),
                                     errorNumbersToAdd: transientSqlErrorNumbersToAdd);
                             }
-
-                            if (useSql2008Compatibility)
-                            {
-                                sqlOptions.UseRowNumberForPaging();
-                            }
-
+                            //if (useSql2008Compatibility)
+                            //{
+                            //    sqlOptions.UseRowNumberForPaging();
+                            //}
                         }),
                         optionsLifetime: ServiceLifetime.Singleton
                         );
@@ -47,7 +45,6 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IKvpDbContext, KvpDbContext>();
             services.AddSingleton<IKvpDbContextFactory, KvpDbContextFactory>();
             services.AddScoped<IVersionProvider, VersionProvider>();
-
 
             return services;
         }
