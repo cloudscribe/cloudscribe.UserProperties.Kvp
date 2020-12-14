@@ -10,9 +10,9 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
             this IServiceCollection services
             )
         {
-           
             services.AddScoped<IKvpItemQueries, KvpItemQueries>();
             services.AddScoped<IKvpItemCommands, KvpItemCommands>();
+            services.AddScoped<IKvpUserSearchQueries, KvpUserSearchQueries>();
 
             return services;
         }

@@ -14,6 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddNoDb<KvpItem>();
             services.TryAddScoped<IKvpItemQueries, KvpItemQueries>();
             services.TryAddScoped<IKvpItemCommands, KvpItemCommands>();
+            services.AddScoped<IKvpUserSearchQueries, KvpUserSearchQueries>();
             services.AddScoped<IVersionProvider, VersionProvider>();
 
 

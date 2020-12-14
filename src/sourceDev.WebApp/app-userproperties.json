@@ -121,7 +121,8 @@
             "RequiredErrorMessage": "Post Code is required",
             "RegexValidationExpression": "",
             "RegexErrorMessage": "",
-            "Options": []
+            "Options": [],
+            "Searchable":  "false"
           },
           
           {
