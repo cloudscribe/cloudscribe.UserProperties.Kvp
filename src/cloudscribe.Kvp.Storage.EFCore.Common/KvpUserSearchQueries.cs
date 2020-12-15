@@ -22,7 +22,6 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
     {
         public KvpUserSearchQueries(IKvpDbContextFactory    kvpContextFactory,
                                     ICoreDbContextFactory   coreDbContextFactory)
-
         {
             _kvpContextFactory    = kvpContextFactory;
             _coreDbContextFactory = coreDbContextFactory;
@@ -47,10 +46,10 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
 
             string searchInputUpper = searchInput.Trim().ToUpper();
             
-
+            // get a list of user IDs from KVPs that match the search input
+            // provided the KVP is configured searchable
             using (var dbKvpContext = _kvpContextFactory.Create())
             {
-                // todo only serchable kvps
                 kvpMatches = dbKvpContext.KvpItems
                     .Where(x => searchableKvpKeys.Contains(x.Key.ToLower()))
                     .Where(x => x.SetId.ToLower().Equals(siteId.ToString().ToLower()))
@@ -117,7 +116,6 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
 
             using (var dbKvpContext = _kvpContextFactory.Create())
             {
-                // todo only serchable kvps
                 kvpMatches = dbKvpContext.KvpItems
                     .Where(x => searchableKvpKeys.Contains(x.Key.ToLower()))
                     .Where(x => x.SetId.ToLower().Equals(siteId.ToString().ToLower()))

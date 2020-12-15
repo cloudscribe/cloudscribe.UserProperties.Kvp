@@ -40,8 +40,6 @@ namespace cloudscribe.Kvp.Storage.NoDb
             var allUsers = await userQueries.GetAllAsync(projectId, cancellationToken).ConfigureAwait(false);
             var users    = allUsers.ToList().AsQueryable();
 
-
-            // todo only serchable kvps
             var allKvp = await kvpQueries.GetAllAsync(projectId).ConfigureAwait(false);
             var kvpMatches = allKvp.ToList().AsQueryable()
                                             .Where(x => searchableKvpKeys.Contains(x.Key.ToLower()))
@@ -140,7 +138,6 @@ namespace cloudscribe.Kvp.Storage.NoDb
 
             string searchInputUpper = searchInput.Trim().ToUpper();
 
-            // todo only serchable kvps
             var allKvp = await kvpQueries.GetAllAsync(projectId).ConfigureAwait(false);
             var kvpMatches = allKvp.ToList().AsQueryable()
                                             .Where(x => searchableKvpKeys.Contains(x.Key.ToLower()))

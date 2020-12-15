@@ -27,29 +27,29 @@ namespace cloudscribe.UserProperties.Kvp
     public class KvpUserInfoAdminHandler : IHandleCustomUserInfoAdmin
     {
         public KvpUserInfoAdminHandler(
-            IProfileOptionsResolver customPropsResolver,
-            IUserPropertyService userPropertyService,
-            IUserPropertyValidator userPropertyValidator,
-            IOptions<MultiTenantOptions> multiTenantOptionsAccessor,
-            IKvpUserSearchQueries kvpUserSearchQueries,
+            IProfileOptionsResolver          customPropsResolver,
+            IUserPropertyService             userPropertyService,
+            IUserPropertyValidator           userPropertyValidator,
+            IOptions<MultiTenantOptions>     multiTenantOptionsAccessor,
+            IKvpUserSearchQueries            kvpUserSearchQueries,
             ILogger<KvpUserInfoAdminHandler> logger
             )
         {
-            _customPropsResolver = customPropsResolver;
-            _log = logger;
+            _customPropsResolver   = customPropsResolver;
+            _log                   = logger;
             _userPropertyValidator = userPropertyValidator;
-            _kvpUserSearchQueries = kvpUserSearchQueries;
-            _multiTenantOptions = multiTenantOptionsAccessor.Value;
-            _userPropertyService = userPropertyService;
+            _kvpUserSearchQueries  = kvpUserSearchQueries;
+            _multiTenantOptions    = multiTenantOptionsAccessor.Value;
+            _userPropertyService   = userPropertyService;
         }
 
-        protected IProfileOptionsResolver _customPropsResolver;
-        protected ILogger _log;
-        protected UserPropertySet _props = null;
-        protected IUserPropertyService _userPropertyService;
-        protected IUserPropertyValidator _userPropertyValidator;
+        protected IProfileOptionsResolver      _customPropsResolver;
+        protected ILogger                      _log;
+        protected UserPropertySet              _props = null;
+        protected IUserPropertyService         _userPropertyService;
+        protected IUserPropertyValidator       _userPropertyValidator;
         private readonly IKvpUserSearchQueries _kvpUserSearchQueries;
-        private   MultiTenantOptions _multiTenantOptions;
+        private   MultiTenantOptions           _multiTenantOptions;
 
         private async Task EnsureProps()
         {
@@ -321,6 +321,7 @@ namespace cloudscribe.UserProperties.Kvp
 
             if (_multiTenantOptions.UseRelatedSitesMode) { siteId = _multiTenantOptions.RelatedSiteId; }
             
+            // list of searchable KVPs comes in from json config
             var searchableProps   = await _customPropsResolver.GetSearchableProfileProps();
             var searchableKvpKeys = searchableProps.Select(definition => definition.Key.ToLower()).Distinct().ToList();
 
@@ -331,6 +332,5 @@ namespace cloudscribe.UserProperties.Kvp
         {
             return Task.FromResult("Index"); // this is just returning the default view name.
         }
-
     }
 }

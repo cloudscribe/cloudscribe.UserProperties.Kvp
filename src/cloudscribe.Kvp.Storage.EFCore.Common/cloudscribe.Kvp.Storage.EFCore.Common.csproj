@@ -2,7 +2,7 @@
 
   <PropertyGroup>
    <Description>Entity Framework Core common classes for cloudscribe.Kvp</Description>
-    <Version>4.1.0</Version>
+    <Version>4.1.1</Version>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <PackageTags>cloudscribe;kvp;commands;queries;ef</PackageTags>
@@ -26,7 +26,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
     <PackageReference Include="cloudscribe.Core.Storage.EFCore.Common" Version="4.1.5" />
-    <!--<PackageReference Include="cloudscribe.UserProperties" Version="4.1.0" />-->
   </ItemGroup>
 
 </Project>

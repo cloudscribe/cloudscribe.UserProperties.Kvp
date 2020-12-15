@@ -97,7 +97,8 @@
             "RequiredErrorMessage": "Membership Number is required",
             "RegexValidationExpression": "",
             "RegexErrorMessage": "",
-            "Options": []
+            "Options": [],
+            "Searchable":  "true"
           },
 
           {
@@ -122,7 +123,7 @@
             "RegexValidationExpression": "",
             "RegexErrorMessage": "",
             "Options": [],
-            "Searchable":  "false"
+            "Searchable":  "true"
           },
           
           {
