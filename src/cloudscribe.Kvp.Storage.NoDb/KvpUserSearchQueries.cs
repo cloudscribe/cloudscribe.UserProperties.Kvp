@@ -33,12 +33,12 @@ namespace cloudscribe.Kvp.Storage.NoDb
         private Dictionary<string, List<string>> kvpMatches = new Dictionary<string, List<string>>();
 
         public async Task<PagedResult<IUserInfo>> GetUserAdminSearchPage(
-                    Guid siteId,
-                    int pageNumber,
-                    int pageSize,
-                    string searchInput,
-                    int sortMode,
-                    List<string> searchableKvpKeys,
+                    Guid              siteId,
+                    int               pageNumber,
+                    int               pageSize,
+                    string            searchInput,
+                    int               sortMode,
+                    List<string>      searchableKvpKeys,
                     CancellationToken cancellationToken = default(CancellationToken))
         {
             cancellationToken.ThrowIfCancellationRequested();

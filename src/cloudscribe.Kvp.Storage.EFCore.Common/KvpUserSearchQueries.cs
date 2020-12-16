@@ -33,12 +33,12 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
         private Dictionary<string, List<string>> kvpMatches = new Dictionary<string, List<string>>();
 
         public async Task<PagedResult<IUserInfo>> GetUserAdminSearchPage(
-            Guid siteId,
-            int pageNumber,
-            int pageSize,
-            string searchInput,
-            int sortMode,
-            List<string> searchableKvpKeys,
+            Guid              siteId,
+            int               pageNumber,
+            int               pageSize,
+            string            searchInput,
+            int               sortMode,
+            List<string>      searchableKvpKeys,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             //sortMode: 0 = DisplayName asc, 1 = JoinDate desc, 2 = Last, First
@@ -61,9 +61,9 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
                     if (!string.IsNullOrWhiteSpace(term))
                     {
                         var usersMatchingTerm = dbKvpContext.KvpItems
-                        .Where(x => searchableKvpKeys.Contains(x.Key.ToUpper()))
-                        .Where(x => x.SetId.ToUpper().Equals(siteId.ToString().ToUpper()))
-                        .Where(x => x.Value.ToUpper().Contains(term))
+                        .Where (x => searchableKvpKeys.Contains(x.Key.ToUpper()))
+                        .Where (x => x.SetId.ToUpper().Equals(siteId.ToString().ToUpper()))
+                        .Where (x => x.Value.ToUpper().Contains(term))
                         .Select(x => x.SubSetId.ToUpper()).Distinct().ToList();
 
                         kvpMatches.Add(term, usersMatchingTerm);
@@ -80,7 +80,7 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
                     {
                         // Note each term is already in upper case
                         query = query.Where(x =>
-                                                 x.NormalizedEmail.Contains(term)
+                                                    x.NormalizedEmail.Contains(term)
                                                  || x.NormalizedUserName.Contains(term)
                                                  || (x.FirstName != null && x.FirstName.ToUpper().Contains(term))
                                                  || (x.LastName != null && x.LastName.ToUpper().Contains(term))
