@@ -36,6 +36,7 @@ namespace cloudscribe.Kvp.Storage.NoDb
             cancellationToken.ThrowIfCancellationRequested();
 
             var projectId = siteId.ToString();
+            searchInput   = searchInput.Trim();
 
             var allUsers = await userQueries.GetAllAsync(projectId, cancellationToken).ConfigureAwait(false);
             var users    = allUsers.ToList().AsQueryable();

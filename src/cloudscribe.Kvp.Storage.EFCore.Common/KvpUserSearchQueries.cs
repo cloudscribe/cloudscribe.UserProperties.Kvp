@@ -41,6 +41,7 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
             CancellationToken cancellationToken = default(CancellationToken))
         {
             //sortMode: 0 = DisplayName asc, 1 = JoinDate desc, 2 = Last, First
+            searchInput = searchInput.Trim();
 
             int offset = (pageSize * pageNumber) - pageSize;
 
