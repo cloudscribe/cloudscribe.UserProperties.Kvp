@@ -323,7 +323,7 @@ namespace cloudscribe.UserProperties.Kvp
             
             // list of searchable KVPs comes in from json config
             var searchableProps   = await _customPropsResolver.GetSearchableProfileProps();
-            var searchableKvpKeys = searchableProps.Select(definition => definition.Key.ToLower()).Distinct().ToList();
+            var searchableKvpKeys = searchableProps.Select(definition => definition.Key.ToUpper()).Distinct().ToList();
 
             return await _kvpUserSearchQueries.GetUserAdminSearchPage(siteId, pageNumber, pageSize, searchInput, sortMode, searchableKvpKeys);
         }

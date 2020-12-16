@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2017-07-13
-// Last Modified:			2018-10-08
+// Last Modified:			2020-12-16 - jk
 // 
 
 using cloudscribe.Core.Models;
@@ -29,7 +29,8 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
 
         private readonly IKvpDbContextFactory    _kvpContextFactory;
         private readonly ICoreDbContextFactory   _coreDbContextFactory;
-        private List<string> kvpMatches = new List<string>();
+        
+        private Dictionary<string, List<string>> kvpMatches = new Dictionary<string, List<string>>();
 
         public async Task<PagedResult<IUserInfo>> GetUserAdminSearchPage(
             Guid siteId,
@@ -41,40 +42,55 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
             CancellationToken cancellationToken = default(CancellationToken))
         {
             //sortMode: 0 = DisplayName asc, 1 = JoinDate desc, 2 = Last, First
-            searchInput = searchInput.Trim();
+
+            if (searchInput == null) searchInput = string.Empty;
+
+            //allows user to enter multiple words (e.g. to allow full name search)
+            var searchTerms = searchInput.Trim().ToUpper().Split(" ");
 
             int offset = (pageSize * pageNumber) - pageSize;
 
             string searchInputUpper = searchInput.Trim().ToUpper();
             
-            // get a list of user IDs from KVPs that match the search input
+            // get a list of user IDs from KVPs that match each search input term
             // provided the KVP is configured searchable
             using (var dbKvpContext = _kvpContextFactory.Create())
             {
-                kvpMatches = dbKvpContext.KvpItems
-                    .Where(x => searchableKvpKeys.Contains(x.Key.ToLower()))
-                    .Where(x => x.SetId.ToLower().Equals(siteId.ToString().ToLower()))
-                    .Where(x => x.Value.ToLower().Contains(searchInput.ToLower()))
-                    .Select(x => x.SubSetId.ToLower()).Distinct().ToList();
+                foreach (var term in searchTerms)
+                {
+                    if (!string.IsNullOrWhiteSpace(term))
+                    {
+                        var usersMatchingTerm = dbKvpContext.KvpItems
+                        .Where(x => searchableKvpKeys.Contains(x.Key.ToUpper()))
+                        .Where(x => x.SetId.ToUpper().Equals(siteId.ToString().ToUpper()))
+                        .Where(x => x.Value.ToUpper().Contains(term))
+                        .Select(x => x.SubSetId.ToUpper()).Distinct().ToList();
+
+                        kvpMatches.Add(term, usersMatchingTerm);
+                    }
+                }
             }
 
             using (var dbContext = _coreDbContextFactory.CreateContext())
             {
-                IQueryable<IUserInfo> query = from x in dbContext.Users
-                                              where
-                                              (
-                                                  x.SiteId == siteId
-                                                      && (
-                                                      searchInput == string.Empty
-                                                      || x.NormalizedEmail.Contains(searchInputUpper)
-                                                      || x.NormalizedUserName.Contains(searchInputUpper)
-                                                      || (x.FirstName != null && x.FirstName.ToUpper().Contains(searchInputUpper))
-                                                      || (x.LastName != null && x.LastName.ToUpper().Contains(searchInputUpper))
-                                                      || x.DisplayName.ToUpper().Contains(searchInputUpper)
-                                                      || kvpMatches.Contains(x.Id.ToString().ToLower())
-                                                      )
-                                              )
-                                              select x;
+                var query = dbContext.Users.Where(x => x.SiteId == siteId);
+                foreach (var term in searchTerms)
+                {
+                    if (!string.IsNullOrWhiteSpace(term))  
+                    {
+                        // Note each term is already in upper case
+                        query = query.Where(x =>
+                                                 x.NormalizedEmail.Contains(term)
+                                                 || x.NormalizedUserName.Contains(term)
+                                                 || (x.FirstName != null && x.FirstName.ToUpper().Contains(term))
+                                                 || (x.LastName != null && x.LastName.ToUpper().Contains(term))
+                                                 || x.DisplayName.ToUpper().Contains(term)
+                                                 || kvpMatches[term].Contains(x.Id.ToString().ToUpper())
+                         );
+                    }
+                }
+
+                query = query.Distinct();
 
                 switch (sortMode)
                 {
@@ -97,52 +113,44 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
                     .ToListAsync<IUserInfo>(cancellationToken)
                     .ConfigureAwait(false);
 
-                var result = new PagedResult<IUserInfo>();
-                result.Data = data;
-                result.PageNumber = pageNumber;
-                result.PageSize = pageSize;
-                result.TotalItems = await CountUsersForAdminSearch(siteId, searchInput, searchableKvpKeys, cancellationToken).ConfigureAwait(false);
-                return result;
+                return new PagedResult<IUserInfo>
+                {
+                    Data       = data,
+                    PageNumber = pageNumber,
+                    PageSize   = pageSize,
+                    TotalItems = await CountUsersForAdminSearch(siteId, searchTerms, cancellationToken).ConfigureAwait(false)
+                };
             }
         }
 
 
         public async Task<int> CountUsersForAdminSearch(
            Guid siteId,
-           string searchInput,
-           List<string> searchableKvpKeys,
+           string[] searchTerms,
            CancellationToken cancellationToken = default(CancellationToken))
         {
-            string searchInputUpper = searchInput.Trim().ToUpper();
-
-            using (var dbKvpContext = _kvpContextFactory.Create())
-            {
-                kvpMatches = dbKvpContext.KvpItems
-                    .Where(x => searchableKvpKeys.Contains(x.Key.ToLower()))
-                    .Where(x => x.SetId.ToLower().Equals(siteId.ToString().ToLower()))
-                    .Where(x => x.Value.ToLower().Contains(searchInput.ToLower()))
-                    .Select(x => x.SubSetId.ToLower()).Distinct().ToList();
-            }
-
             using (var dbContext = _coreDbContextFactory.CreateContext())
             {
-                return await dbContext.Users.CountAsync<SiteUser>(
-                x =>
-                (
-                    x.SiteId == siteId
-                    && (
-                    searchInput == string.Empty
-                    || x.NormalizedEmail.Contains(searchInputUpper)
-                    || x.NormalizedUserName.Contains(searchInputUpper)
-                    || (x.FirstName != null && x.FirstName.ToUpper().Contains(searchInputUpper))
-                    || (x.LastName != null && x.LastName.ToUpper().Contains(searchInputUpper))
-                    || x.DisplayName.ToUpper().Contains(searchInputUpper)
-                    || kvpMatches.Contains(x.Id.ToString().ToLower())
-                    )
-                )
-                , cancellationToken
-                )
-                .ConfigureAwait(false);
+                var query = dbContext.Users.Where(x => x.SiteId == siteId);
+
+                foreach (var term in searchTerms)
+                {
+                    if (!string.IsNullOrWhiteSpace(term))
+                    {
+                        query = query.Where(x =>
+                                                   x.NormalizedEmail.Contains(term)
+                                                || x.NormalizedUserName.Contains(term)
+                                                || (x.FirstName != null && x.FirstName.ToUpper().Contains(term))
+                                                || (x.LastName  != null && x.LastName .ToUpper().Contains(term))
+                                                || x.DisplayName.ToUpper().Contains(term)
+                                                || kvpMatches[term].Contains(x.Id.ToString().ToUpper())
+                         );
+                    }
+                }
+
+                query = query.Distinct();
+
+                return await query.CountAsync().ConfigureAwait(false);
             }
         }
     }

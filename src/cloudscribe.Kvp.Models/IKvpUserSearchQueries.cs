@@ -17,10 +17,10 @@ namespace cloudscribe.Kvp.Models
     public interface IKvpUserSearchQueries
     {
         Task<int> CountUsersForAdminSearch(
-            Guid siteId, 
-            string searchInput, 
-            List<string> searchableKvpKeys, 
-            CancellationToken cancellationToken = default);
+           Guid siteId,
+           string[] searchTerms,
+           CancellationToken cancellationToken = default(CancellationToken));
+
 
         Task<PagedResult<IUserInfo>> GetUserAdminSearchPage(
             Guid siteId, 
