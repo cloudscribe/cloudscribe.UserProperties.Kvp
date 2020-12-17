@@ -12,6 +12,7 @@ using cloudscribe.UserProperties.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace cloudscribe.UserProperties.Kvp
@@ -24,7 +25,7 @@ namespace cloudscribe.UserProperties.Kvp
             )
         {
             _userManager = userManager;
-            _kvpStorage = kvpStorage;
+            _kvpStorage  = kvpStorage;
         }
 
         private SiteUserManager<SiteUser> _userManager;
@@ -174,6 +175,30 @@ namespace cloudscribe.UserProperties.Kvp
                 result.Add(prop);
             }
             
+            return result;
+        }
+
+        public async Task<string> FetchUserProperty(string userId, string key)
+        {
+            var result = (string)null;
+
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(key))
+                return result;
+            
+            var siteUser = await _userManager.FindByIdAsync(userId);
+            var siteId   = siteUser?.SiteId.ToString();
+
+            if (!string.IsNullOrEmpty(siteId))
+            {
+                var kvpList = await _kvpStorage.FetchById(
+                    siteId, // projectId
+                    "*",    // featureId
+                    siteId, // setId
+                    userId  // subSetId
+                    ).ConfigureAwait(false);
+
+                result = kvpList.FirstOrDefault(x => x.Key.Equals(key, StringComparison.OrdinalIgnoreCase))?.Value;
+            }
             return result;
         }
 

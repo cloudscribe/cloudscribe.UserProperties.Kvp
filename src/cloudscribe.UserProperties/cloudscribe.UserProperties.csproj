@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Models for custom user properties that can be configured per tenant for cloudscribe core customization</Description>
-    <Version>4.1.2</Version>
+    <Version>4.1.4</Version>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <PackageTags>cloudscribe;userprofile;customization</PackageTags>
