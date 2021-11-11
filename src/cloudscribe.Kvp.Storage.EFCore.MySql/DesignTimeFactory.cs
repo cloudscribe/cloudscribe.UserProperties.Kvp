@@ -9,7 +9,10 @@ namespace cloudscribe.Kvp.Storage.EFCore.MySql
         public KvpDbContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<KvpDbContext>();
-            builder.UseMySql("Server=yourserver;Database=yourdb;Uid=youruser;Pwd=yourpassword;Charset=utf8;");
+            var connString = "Server=yourserver;Database=yourdb;Uid=youruser;Pwd=yourpassword;Charset=utf8;";
+
+            // for breaking changes in Net5.0:
+            builder.UseMySql(connString, ServerVersion.AutoDetect(connString));
             return new KvpDbContext(builder.Options);
         }
     }

@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <Description>model classes for key/value storage</Description>
-    <Version>4.1.2</Version>
+    <Version>5.0.0</Version>
+    <TargetFramework>net5.0</TargetFramework>
     <Authors>Joe Audette</Authors>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <PackageTags>cloudscribe;kvp</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp</PackageProjectUrl>
@@ -16,11 +16,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="icon.png" Pack="true" PackagePath="\"/>
+    <None Include="icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="cloudscribe.Core.Models" Version="4.1.5" />
+    <!--<PackageReference Include="cloudscribe.Core.Models" Version="4.1.5" />-->
+    <PackageReference Include="cloudscribe.Core.Models" Version="5.0.0" />
+    
     <PackageReference Include="cloudscribe.Pagination.Models" Version="1.1.0" />
   </ItemGroup>
   
