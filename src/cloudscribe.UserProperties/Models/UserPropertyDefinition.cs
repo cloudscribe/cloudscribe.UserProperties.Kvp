@@ -29,6 +29,6 @@ namespace cloudscribe.UserProperties.Models
 
         public bool EditableOnAdminUserEdit { get; set; } = true;
 
-
+        public bool Searchable { get; set; } = false;
     }
 }

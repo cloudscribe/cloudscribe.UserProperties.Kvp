@@ -9,11 +9,15 @@ using cloudscribe.Core.Models;
 using cloudscribe.Core.Web.ExtensionPoints;
 using cloudscribe.Core.Web.ViewModels.Account;
 using cloudscribe.Core.Web.ViewModels.UserAdmin;
+using cloudscribe.Kvp.Models;
+using cloudscribe.Pagination.Models;
 using cloudscribe.UserProperties.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,23 +27,29 @@ namespace cloudscribe.UserProperties.Kvp
     public class KvpUserInfoAdminHandler : IHandleCustomUserInfoAdmin
     {
         public KvpUserInfoAdminHandler(
-            IProfileOptionsResolver customPropsResolver,
-            IUserPropertyService userPropertyService,
-            IUserPropertyValidator userPropertyValidator,
+            IProfileOptionsResolver          customPropsResolver,
+            IUserPropertyService             userPropertyService,
+            IUserPropertyValidator           userPropertyValidator,
+            IOptions<MultiTenantOptions>     multiTenantOptionsAccessor,
+            IKvpUserSearchQueries            kvpUserSearchQueries,
             ILogger<KvpUserInfoAdminHandler> logger
             )
         {
-            _customPropsResolver = customPropsResolver;
-            _log = logger;
+            _customPropsResolver   = customPropsResolver;
+            _log                   = logger;
             _userPropertyValidator = userPropertyValidator;
-            _userPropertyService = userPropertyService;
+            _kvpUserSearchQueries  = kvpUserSearchQueries;
+            _multiTenantOptions    = multiTenantOptionsAccessor.Value;
+            _userPropertyService   = userPropertyService;
         }
 
-        protected IProfileOptionsResolver _customPropsResolver;
-        protected ILogger _log;
-        protected UserPropertySet _props = null;
-        protected IUserPropertyService _userPropertyService;
-        protected IUserPropertyValidator _userPropertyValidator;
+        protected IProfileOptionsResolver      _customPropsResolver;
+        protected ILogger                      _log;
+        protected UserPropertySet              _props = null;
+        protected IUserPropertyService         _userPropertyService;
+        protected IUserPropertyValidator       _userPropertyValidator;
+        private readonly IKvpUserSearchQueries _kvpUserSearchQueries;
+        private   MultiTenantOptions           _multiTenantOptions;
 
         private async Task EnsureProps()
         {
@@ -298,6 +308,29 @@ namespace cloudscribe.UserProperties.Kvp
             {
                 _log.LogError("user was null in HandleUserInfoPostSuccess, unable to update user with custom data");
             }
+        }
+
+        public virtual async Task<PagedResult<IUserInfo>> GetCustomUserAdminSearchPage(
+           Guid siteId,
+           int pageNumber,
+           int pageSize,
+           string searchInput,
+           int sortMode,
+           CancellationToken cancellationToken = default)
+        {
+
+            if (_multiTenantOptions.UseRelatedSitesMode) { siteId = _multiTenantOptions.RelatedSiteId; }
+            
+            // list of searchable KVPs comes in from json config
+            var searchableProps   = await _customPropsResolver.GetSearchableProfileProps();
+            var searchableKvpKeys = searchableProps.Select(definition => definition.Key.ToUpper()).Distinct().ToList();
+
+            return await _kvpUserSearchQueries.GetUserAdminSearchPage(siteId, pageNumber, pageSize, searchInput, sortMode, searchableKvpKeys);
+        }
+
+        public Task<string> GetUserListViewName(ISiteContext site, HttpContext httpContext)
+        {
+            return Task.FromResult("Index"); // this is just returning the default view name.
         }
     }
 }

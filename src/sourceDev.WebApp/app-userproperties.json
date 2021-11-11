@@ -65,8 +65,8 @@
             "VisibleOnRegistration": "true",
             "VisibleToUserOnProfile": "false",
             "EditableByUserOnProfile": "false",
-            "VisibleOnAdminUserEdit": "false",
-            "EditableOnAdminUserEdit": "false",
+            "VisibleOnAdminUserEdit": "true",
+            "EditableOnAdminUserEdit": "true",
             "MaxLength": "30",
             "MaxLengthErrorMessage": "Date of Birth has a max length of 30 characters",
             "Required": "true",
@@ -97,7 +97,8 @@
             "RequiredErrorMessage": "Membership Number is required",
             "RegexValidationExpression": "",
             "RegexErrorMessage": "",
-            "Options": []
+            "Options": [],
+            "Searchable":  "true"
           },
 
           {
@@ -121,7 +122,8 @@
             "RequiredErrorMessage": "Post Code is required",
             "RegexValidationExpression": "",
             "RegexErrorMessage": "",
-            "Options": []
+            "Options": [],
+            "Searchable":  "true"
           },
           
           {

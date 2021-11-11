@@ -1,6 +1,5 @@
 ﻿using cloudscribe.Kvp.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace cloudscribe.Kvp.Storage.EFCore.Common
 {
@@ -10,9 +9,9 @@ namespace cloudscribe.Kvp.Storage.EFCore.Common
             this IServiceCollection services
             )
         {
-           
             services.AddScoped<IKvpItemQueries, KvpItemQueries>();
             services.AddScoped<IKvpItemCommands, KvpItemCommands>();
+            services.AddScoped<IKvpUserSearchQueries, KvpUserSearchQueries>();
 
             return services;
         }

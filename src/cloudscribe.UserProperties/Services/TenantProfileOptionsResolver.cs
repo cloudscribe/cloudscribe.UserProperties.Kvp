@@ -8,9 +8,7 @@
 using cloudscribe.Core.Models;
 using cloudscribe.UserProperties.Models;
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace cloudscribe.UserProperties.Services
@@ -42,6 +40,37 @@ namespace cloudscribe.UserProperties.Services
             }
 
             var result = new UserPropertySet();
+            return Task.FromResult(result);
+        }
+
+        public Task<List<UserPropertyDefinition>> GetSearchableProfileProps()
+        {
+            var result = new List<UserPropertyDefinition>();
+
+            foreach (var s in container.PropertySets)
+            {
+                if (s.TenantId == currentSite.Id.ToString()) 
+                { 
+                    foreach (var p in s.Properties)
+                    {
+                        if (p.Searchable) result.Add(p);
+                    }
+                    return Task.FromResult(result);
+                }
+            }
+
+            foreach (var s in container.PropertySets)
+            {
+                if (s.TenantId == "*") 
+                {
+                    foreach (var p in s.Properties)
+                    {
+                        if (p.Searchable) result.Add(p);
+                    }
+                    return Task.FromResult(result);
+                }
+            }
+
             return Task.FromResult(result);
         }
     }
