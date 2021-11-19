@@ -21,7 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddCloudscribeKvpEFCommon();
             
-            services.AddEntityFrameworkSqlServer()
+            services // .AddEntityFrameworkSqlServer()
                 .AddDbContext<KvpDbContext>(options =>
                     options.UseSqlServer(connectionString,
                         sqlServerOptionsAction: sqlOptions =>
