@@ -20,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddCloudscribeKvpEFCommon();
 
             
-            services.AddEntityFrameworkNpgsql()
+            services // .AddEntityFrameworkNpgsql()
                 .AddDbContext<KvpDbContext>(options =>
                     options.UseNpgsql(connectionString,
                     npgsqlOptionsAction: sqlOptions =>

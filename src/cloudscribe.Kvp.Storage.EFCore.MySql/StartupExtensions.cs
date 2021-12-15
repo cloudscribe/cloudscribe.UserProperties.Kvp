@@ -19,9 +19,10 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddCloudscribeKvpEFCommon();
 
-            services.AddEntityFrameworkMySql()
+            services // .AddEntityFrameworkMySql()
                 .AddDbContext<KvpDbContext>(options =>
                     options.UseMySql(connectionString,
+                    ServerVersion.AutoDetect(connectionString),  // breaking change here in Net5.0
                     mySqlOptionsAction: sqlOptions =>
                     {
                         if (maxConnectionRetryCount > 0)

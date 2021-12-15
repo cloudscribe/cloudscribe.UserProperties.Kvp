@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <Description>Entity Framework Core postgresql storage for cloudscribe.Kvp</Description>
-    <Version>4.1.2</Version>
+    <Version>5.0.1</Version>
+    <TargetFramework>net5.0</TargetFramework>
     <Authors>Joe Audette</Authors>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageTags>cloudscribe;kvp;commands;ef</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp</PackageProjectUrl>
@@ -18,7 +18,6 @@
   </ItemGroup>
 
 
-
   <ItemGroup>
     <ProjectReference Include="..\cloudscribe.Kvp.Models\cloudscribe.Kvp.Models.csproj" />
     <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.Common\cloudscribe.Kvp.Storage.EFCore.Common.csproj" />
@@ -26,14 +25,14 @@
 
   <ItemGroup>
     <PackageReference Include="cloudscribe.Versioning" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.0" />
-    <PackageReference Include="cloudscribe.EFCore.PostgreSql.Conventions" Version="4.1.0" />	
 
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.0" />
+    <PackageReference Include="cloudscribe.EFCore.PostgreSql.Conventions" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
