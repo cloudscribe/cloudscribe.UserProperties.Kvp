@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>sourceDev.WebApp-B9D62EAA-6A06-44D6-88C0-D74B1C558BA0</UserSecretsId>
   </PropertyGroup>
 
@@ -33,16 +33,16 @@
     
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
 
-    <PackageReference Include="cloudscribe.Core.Web" Version="5.0.*" />
-    <PackageReference Include="cloudscribe.Core.CompiledViews.Bootstrap4" Version="5.0.*" />
-    <PackageReference Include="cloudscribe.Web.StaticFiles" Version="5.0.*" />
+    <PackageReference Include="cloudscribe.Core.Web" Version="6.0.*" />
+    <PackageReference Include="cloudscribe.Core.CompiledViews.Bootstrap4" Version="6.0.*" />
+    <PackageReference Include="cloudscribe.Web.StaticFiles" Version="6.0.*" />
 
-    <PackageReference Include="cloudscribe.Core.Storage.NoDb" Version="5.0.*" />
-    <PackageReference Include="cloudscribe.Core.Storage.EFCore.MSSQL" Version="5.0.*" />
-    <PackageReference Include="cloudscribe.Core.Storage.EFCore.MySql" Version="5.0.*" />
-    <PackageReference Include="cloudscribe.Core.Storage.EFCore.pgsql" Version="5.0.*" />
-    <PackageReference Include="cloudscribe.Core.Storage.EFCore.PostgreSql" Version="5.0.*" />
-    <PackageReference Include="cloudscribe.Core.Storage.EFCore.SQLite" Version="5.0.*" />
+    <PackageReference Include="cloudscribe.Core.Storage.NoDb" Version="6.0.*" />
+    <PackageReference Include="cloudscribe.Core.Storage.EFCore.MSSQL" Version="6.0.*" />
+    <PackageReference Include="cloudscribe.Core.Storage.EFCore.MySql" Version="6.0.*" />
+    <PackageReference Include="cloudscribe.Core.Storage.EFCore.pgsql" Version="6.0.*" />
+    <PackageReference Include="cloudscribe.Core.Storage.EFCore.PostgreSql" Version="6.0.*" />
+    <PackageReference Include="cloudscribe.Core.Storage.EFCore.SQLite" Version="6.0.*" />
 
     
     <PackageReference Include="cloudscribe.Core.SimpleContent" Version="5.5.*" />
