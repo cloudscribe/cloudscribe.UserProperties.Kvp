@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <Description>NoDb storage for cloudscribe key/value models. NoDb storage is only recommended for small sites.</Description>
-    <Version>5.0.0</Version>
-    <TargetFramework>net5.0</TargetFramework>
+    <Version>6.0.0</Version>
+    <TargetFramework>net6.0</TargetFramework>
     <Authors>Joe Audette</Authors>
     <PackageTags>cloudscribe;kvp;nodb</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="cloudscribe.Versioning" Version="1.0.0" />
+    <PackageReference Include="cloudscribe.Versioning" Version="6.0.0" />
     <ProjectReference Include="..\cloudscribe.Kvp.Models\cloudscribe.Kvp.Models.csproj" />
   </ItemGroup>
 
