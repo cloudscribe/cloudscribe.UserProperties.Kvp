@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\cloudscribe.UserProperties.Kvp\cloudscribe.UserProperties.Kvp.csproj" />
+    <ProjectReference Include="..\cloudscribe.UserProperties\cloudscribe.UserProperties.csproj" />
+  </ItemGroup>
+
+  
+</Project>

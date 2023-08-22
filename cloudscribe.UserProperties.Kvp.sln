@@ -1,31 +1,33 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{26B35914-6144-495B-AE28-CF5E21CA3B94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Models", "src\cloudscribe.Kvp.Models\cloudscribe.Kvp.Models.csproj", "{C2AB7956-D813-4F6B-839E-0BDBECD3733F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Models", "src\cloudscribe.Kvp.Models\cloudscribe.Kvp.Models.csproj", "{C2AB7956-D813-4F6B-839E-0BDBECD3733F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Storage.EFCore.Common", "src\cloudscribe.Kvp.Storage.EFCore.Common\cloudscribe.Kvp.Storage.EFCore.Common.csproj", "{26280B75-9A2F-43C2-BCA2-2E1828C72B27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.Common", "src\cloudscribe.Kvp.Storage.EFCore.Common\cloudscribe.Kvp.Storage.EFCore.Common.csproj", "{26280B75-9A2F-43C2-BCA2-2E1828C72B27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Storage.EFCore.MSSQL", "src\cloudscribe.Kvp.Storage.EFCore.MSSQL\cloudscribe.Kvp.Storage.EFCore.MSSQL.csproj", "{A235563A-A098-471E-9C43-A8C7FE8FC4EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.MSSQL", "src\cloudscribe.Kvp.Storage.EFCore.MSSQL\cloudscribe.Kvp.Storage.EFCore.MSSQL.csproj", "{A235563A-A098-471E-9C43-A8C7FE8FC4EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Storage.EFCore.MySql", "src\cloudscribe.Kvp.Storage.EFCore.MySql\cloudscribe.Kvp.Storage.EFCore.MySql.csproj", "{0F63C3ED-FDFC-432E-A4EF-6C517F920310}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.MySql", "src\cloudscribe.Kvp.Storage.EFCore.MySql\cloudscribe.Kvp.Storage.EFCore.MySql.csproj", "{0F63C3ED-FDFC-432E-A4EF-6C517F920310}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Storage.EFCore.pgsql", "src\cloudscribe.Kvp.Storage.EFCore.pgsql\cloudscribe.Kvp.Storage.EFCore.pgsql.csproj", "{029AD184-1332-47C8-931A-D1E40C49DBEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.pgsql", "src\cloudscribe.Kvp.Storage.EFCore.pgsql\cloudscribe.Kvp.Storage.EFCore.pgsql.csproj", "{029AD184-1332-47C8-931A-D1E40C49DBEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Storage.EFCore.PostgreSql", "src\cloudscribe.Kvp.Storage.EFCore.PostgreSql\cloudscribe.Kvp.Storage.EFCore.PostgreSql.csproj", "{661BE3A6-5BE9-40B1-B8D7-A3DD01C7A0A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.PostgreSql", "src\cloudscribe.Kvp.Storage.EFCore.PostgreSql\cloudscribe.Kvp.Storage.EFCore.PostgreSql.csproj", "{661BE3A6-5BE9-40B1-B8D7-A3DD01C7A0A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Storage.EFCore.SQLite", "src\cloudscribe.Kvp.Storage.EFCore.SQLite\cloudscribe.Kvp.Storage.EFCore.SQLite.csproj", "{A3CE406E-E9B8-488B-89F3-0996BB8CF1B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.SQLite", "src\cloudscribe.Kvp.Storage.EFCore.SQLite\cloudscribe.Kvp.Storage.EFCore.SQLite.csproj", "{A3CE406E-E9B8-488B-89F3-0996BB8CF1B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Storage.NoDb", "src\cloudscribe.Kvp.Storage.NoDb\cloudscribe.Kvp.Storage.NoDb.csproj", "{AD5B40AD-20B6-456E-900F-C6158EA285A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.NoDb", "src\cloudscribe.Kvp.Storage.NoDb\cloudscribe.Kvp.Storage.NoDb.csproj", "{AD5B40AD-20B6-456E-900F-C6158EA285A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.UserProperties", "src\cloudscribe.UserProperties\cloudscribe.UserProperties.csproj", "{F8C60CD7-D268-4884-880F-B54BA5127FAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.UserProperties", "src\cloudscribe.UserProperties\cloudscribe.UserProperties.csproj", "{F8C60CD7-D268-4884-880F-B54BA5127FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.UserProperties.Kvp", "src\cloudscribe.UserProperties.Kvp\cloudscribe.UserProperties.Kvp.csproj", "{DABDCF8A-5FBC-4192-99F5-3FE9125FF2D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.UserProperties.Kvp", "src\cloudscribe.UserProperties.Kvp\cloudscribe.UserProperties.Kvp.csproj", "{DABDCF8A-5FBC-4192-99F5-3FE9125FF2D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sourceDev.WebApp", "src\sourceDev.WebApp\sourceDev.WebApp.csproj", "{2C31220E-680F-4F1E-9950-0F004CDA3904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sourceDev.WebApp", "src\sourceDev.WebApp\sourceDev.WebApp.csproj", "{2C31220E-680F-4F1E-9950-0F004CDA3904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Views.BS5", "src\cloudscribe.Kvp.Views.BS5\cloudscribe.Kvp.Views.BS5.csproj", "{CCFCCC62-B27E-4CC5-979F-A41E9988B018}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,9 +37,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C2AB7956-D813-4F6B-839E-0BDBECD3733F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -172,6 +171,21 @@ Global
 		{2C31220E-680F-4F1E-9950-0F004CDA3904}.Release|x64.Build.0 = Release|Any CPU
 		{2C31220E-680F-4F1E-9950-0F004CDA3904}.Release|x86.ActiveCfg = Release|Any CPU
 		{2C31220E-680F-4F1E-9950-0F004CDA3904}.Release|x86.Build.0 = Release|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Debug|x64.Build.0 = Debug|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Debug|x86.Build.0 = Debug|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Release|x64.ActiveCfg = Release|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Release|x64.Build.0 = Release|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Release|x86.ActiveCfg = Release|Any CPU
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C2AB7956-D813-4F6B-839E-0BDBECD3733F} = {26B35914-6144-495B-AE28-CF5E21CA3B94}
@@ -185,5 +199,9 @@ Global
 		{F8C60CD7-D268-4884-880F-B54BA5127FAB} = {26B35914-6144-495B-AE28-CF5E21CA3B94}
 		{DABDCF8A-5FBC-4192-99F5-3FE9125FF2D9} = {26B35914-6144-495B-AE28-CF5E21CA3B94}
 		{2C31220E-680F-4F1E-9950-0F004CDA3904} = {26B35914-6144-495B-AE28-CF5E21CA3B94}
+		{CCFCCC62-B27E-4CC5-979F-A41E9988B018} = {26B35914-6144-495B-AE28-CF5E21CA3B94}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5E647E9-136D-490E-A9FF-8E895ECC87E4}
 	EndGlobalSection
 EndGlobal

@@ -330,7 +330,7 @@ namespace cloudscribe.UserProperties.Kvp
 
         public Task<string> GetUserListViewName(ISiteContext site, HttpContext httpContext)
         {
-            return Task.FromResult("Index"); // this is just returning the default view name.
+            return Task.FromResult("Index_kvp"); // this is just returning the default view name.
         }
     }
 }

@@ -29,6 +29,21 @@
 
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\cloudscribe.Kvp.Models\cloudscribe.Kvp.Models.csproj" />
+    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.Common\cloudscribe.Kvp.Storage.EFCore.Common.csproj" />
+    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.MSSQL\cloudscribe.Kvp.Storage.EFCore.MSSQL.csproj" />
+    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.MySql\cloudscribe.Kvp.Storage.EFCore.MySql.csproj" />
+    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.pgsql\cloudscribe.Kvp.Storage.EFCore.pgsql.csproj" />
+    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.PostgreSql\cloudscribe.Kvp.Storage.EFCore.PostgreSql.csproj" />
+    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.SQLite\cloudscribe.Kvp.Storage.EFCore.SQLite.csproj" />
+    <ProjectReference Include="..\cloudscribe.Kvp.Storage.NoDb\cloudscribe.Kvp.Storage.NoDb.csproj" />
+    <ProjectReference Include="..\cloudscribe.Kvp.Views.BS5\cloudscribe.Kvp.Views.BS5.csproj" />
+    <ProjectReference Include="..\cloudscribe.UserProperties\cloudscribe.UserProperties.csproj" />
+    <ProjectReference Include="..\cloudscribe.UserProperties.Kvp\cloudscribe.UserProperties.Kvp.csproj" />
+  </ItemGroup>
+  
+  
   <ItemGroup Label="Package References">
     
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
@@ -72,17 +87,6 @@
     
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\cloudscribe.Kvp.Models\cloudscribe.Kvp.Models.csproj" />
-    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.Common\cloudscribe.Kvp.Storage.EFCore.Common.csproj" />
-    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.MSSQL\cloudscribe.Kvp.Storage.EFCore.MSSQL.csproj" />
-    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.MySql\cloudscribe.Kvp.Storage.EFCore.MySql.csproj" />
-    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.pgsql\cloudscribe.Kvp.Storage.EFCore.pgsql.csproj" />
-    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.PostgreSql\cloudscribe.Kvp.Storage.EFCore.PostgreSql.csproj" />
-    <ProjectReference Include="..\cloudscribe.Kvp.Storage.EFCore.SQLite\cloudscribe.Kvp.Storage.EFCore.SQLite.csproj" />
-    <ProjectReference Include="..\cloudscribe.Kvp.Storage.NoDb\cloudscribe.Kvp.Storage.NoDb.csproj" />
-    <ProjectReference Include="..\cloudscribe.UserProperties\cloudscribe.UserProperties.csproj" />
-    <ProjectReference Include="..\cloudscribe.UserProperties.Kvp\cloudscribe.UserProperties.Kvp.csproj" />
-  </ItemGroup>
+
 
 </Project>

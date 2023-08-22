@@ -13,6 +13,8 @@ namespace cloudscribe.UserProperties.Models
         string GetNativeUserProperty(ISiteUser siteUser, string key);
         void UpdateNativeUserProperty(ISiteUser siteUser, string key, string value);
         Task<List<UserProperty>> FetchByUser(string siteId, string userId);
+        Task<List<UserProperty>> FetchForUserListing(string siteId, string userId);
+        Task<int> CountNonNativeUserListingProperties();
         Task<string> FetchUserProperty(string userId, string key);
         Task CreateOrUpdate(string siteId, string userId, string key, string value);
     }
