@@ -73,5 +73,44 @@ namespace cloudscribe.UserProperties.Services
 
             return Task.FromResult(result);
         }
+
+        public Task<List<UserPropertyDefinition>> GetUserListingProfileProps()
+        {
+            var result = new List<UserPropertyDefinition>();
+
+            foreach (var s in container.PropertySets)
+            {
+                if (s.TenantId == currentSite.Id.ToString())
+                {
+                    foreach (var p in s.Properties)
+                    {
+                        if (p.VisibleOnUserListing) result.Add(p);
+                    }
+                    return Task.FromResult(result);
+                }
+            }
+
+            foreach (var s in container.PropertySets)
+            {
+                if (s.TenantId == "*")
+                {
+                    foreach (var p in s.Properties)
+                    {
+                        if (p.VisibleOnUserListing) result.Add(p);
+                    }
+                    return Task.FromResult(result);
+                }
+            }
+
+            return Task.FromResult(result);
+        }
+
+        public Task<string> GetUserListingViewName()
+        {
+            if(!string.IsNullOrWhiteSpace(container.UserListingViewName))
+                return Task.FromResult(container.UserListingViewName);
+            else
+                return Task.FromResult("index");
+        }
     }
 }

@@ -328,9 +328,9 @@ namespace cloudscribe.UserProperties.Kvp
             return await _kvpUserSearchQueries.GetUserAdminSearchPage(siteId, pageNumber, pageSize, searchInput, sortMode, searchableKvpKeys);
         }
 
-        public Task<string> GetUserListViewName(ISiteContext site, HttpContext httpContext)
+        public virtual async Task<string> GetUserListViewName(ISiteContext site, HttpContext httpContext)
         {
-            return Task.FromResult("Index"); // this is just returning the default view name.
+            return await _customPropsResolver.GetUserListingViewName();  // this is NO LONGER just returning the default index view name.
         }
     }
 }

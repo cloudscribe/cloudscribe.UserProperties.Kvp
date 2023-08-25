@@ -21,15 +21,18 @@ namespace cloudscribe.UserProperties.Kvp
     {
         public UserPropertyService(
             SiteUserManager<SiteUser> userManager,
-            IKvpStorageService kvpStorage
+            IKvpStorageService kvpStorage,
+            IProfileOptionsResolver profileOptionsResolver
             )
         {
-            _userManager = userManager;
-            _kvpStorage  = kvpStorage;
+            _userManager            = userManager;
+            _kvpStorage             = kvpStorage;
+            _profileOptionsResolver = profileOptionsResolver;
         }
 
         private SiteUserManager<SiteUser> _userManager;
         private IKvpStorageService _kvpStorage;
+        private readonly IProfileOptionsResolver _profileOptionsResolver;
 
         public async Task<SiteUser> GetUser(string userId)
         {
@@ -176,6 +179,42 @@ namespace cloudscribe.UserProperties.Kvp
             }
             
             return result;
+        }
+
+        public async Task<List<UserProperty>> FetchForUserListing(string siteId, string userId)
+        {
+            var result = new List<UserProperty>();
+
+            var kvpList = await _kvpStorage.FetchById(
+                siteId, //projectId
+                "*", // featureId
+                siteId, //setId
+                userId // subSetId
+                ).ConfigureAwait(false);
+
+            var userListingProperties = await _profileOptionsResolver.GetUserListingProfileProps();
+            var userListingKeys = userListingProperties.Select(x => x.Key);
+
+            foreach (var kvp in kvpList.Where(k => userListingKeys.Contains(k.Key)))
+            {
+                var prop = new UserProperty();
+                prop.CreatedUtc = kvp.CreatedUtc;
+                prop.Key = kvp.Key;
+                prop.ModifiedUtc = kvp.ModifiedUtc;
+                prop.SiteId = kvp.SetId;
+                prop.UserId = kvp.SubSetId;
+                prop.Value = kvp.Value;
+
+                result.Add(prop);
+            }
+
+            return result;
+        }
+
+        public async Task<int> CountNonNativeUserListingProperties() 
+        {
+            var userListingProperties = await _profileOptionsResolver.GetUserListingProfileProps();
+            return userListingProperties.Where(x => !IsNativeUserProperty(x.Key)).Count();
         }
 
         public async Task<string> FetchUserProperty(string userId, string key)
