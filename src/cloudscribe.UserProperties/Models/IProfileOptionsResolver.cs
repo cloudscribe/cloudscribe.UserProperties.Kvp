@@ -8,5 +8,6 @@ namespace cloudscribe.UserProperties.Models
         Task<UserPropertySet> GetProfileProps();
         Task<List<UserPropertyDefinition>> GetSearchableProfileProps();
         Task<List<UserPropertyDefinition>> GetUserListingProfileProps();
+        Task<string> GetUserListingViewName();
     }
 }

@@ -19,5 +19,7 @@ namespace cloudscribe.UserProperties.Models
         }
 
         public List<UserPropertySet> PropertySets { get; set; }
+
+        public string UserListingViewName { get; set; } = "index";
     }
 }

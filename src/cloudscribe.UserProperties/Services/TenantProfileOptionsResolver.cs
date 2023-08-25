@@ -104,5 +104,13 @@ namespace cloudscribe.UserProperties.Services
 
             return Task.FromResult(result);
         }
+
+        public Task<string> GetUserListingViewName()
+        {
+            if(!string.IsNullOrWhiteSpace(container.UserListingViewName))
+                return Task.FromResult(container.UserListingViewName);
+            else
+                return Task.FromResult("index");
+        }
     }
 }

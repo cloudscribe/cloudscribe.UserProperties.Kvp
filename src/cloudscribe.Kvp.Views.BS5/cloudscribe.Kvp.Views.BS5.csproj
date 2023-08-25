@@ -3,8 +3,20 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <Version>6.0.0</Version>
+    <Description>Custom views for cloudscribe.Kvp</Description>
+    <PackageTags>cloudscribe;kvp;commands;ef</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    <Authors>Jim Kerslake</Authors>
+    <PackageProjectUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp</PackageProjectUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
+    <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\cloudscribe.UserProperties.Kvp\cloudscribe.UserProperties.Kvp.csproj" />
