@@ -26,8 +26,7 @@
                 "RequiredErrorMessage": "First Name is required",
                 "RegexValidationExpression": "",
                 "RegexErrorMessage": "",
-                "Options": [],
-                "VisibleOnUserListing": "true"
+                "Options": []
             },
             {
                 "Key": "LastName",
@@ -50,8 +49,7 @@
                 "RequiredErrorMessage": "Last Name is required",
                 "RegexValidationExpression": "",
                 "RegexErrorMessage": "",
-                "Options": [],
-                "VisibleOnUserListing": "true"
+                "Options": []
             },
 
             {
@@ -75,8 +73,7 @@
                 "RequiredErrorMessage": "Date of Birth is required!",
                 "RegexValidationExpression": "",
                 "RegexErrorMessage": "",
-                "Options": [],
-                "VisibleOnUserListing": "false"
+                "Options": []
             },
 
             {
@@ -128,7 +125,7 @@
                 "RegexErrorMessage": "",
                 "Options": [],
                 "Searchable": "true",
-                "VisibleOnUserListing":  "true"
+                "VisibleOnUserListing": "true"
             },
 
             {
@@ -152,8 +149,7 @@
                 "RequiredErrorMessage": "Display Name is required",
                 "RegexValidationExpression": "",
                 "RegexErrorMessage": "",
-                "Options": [],
-                "VisibleOnUserListing": "true"
+                "Options": []
             }
 
         ]
