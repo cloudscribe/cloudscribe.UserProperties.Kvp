@@ -117,8 +117,8 @@
               <Children />
             </NavNode>
             <NavNode key="PersonalData"
-                controller="Manage"
-                action="PersonalData"
+                controller="KVPUserManagement"
+                action="PersonalDataWithKVP"
                 text="Personal Data"
                 componentVisibility="child-dropdown,breadcrumbs"
                 excludeFromSearchSiteMap="true"
