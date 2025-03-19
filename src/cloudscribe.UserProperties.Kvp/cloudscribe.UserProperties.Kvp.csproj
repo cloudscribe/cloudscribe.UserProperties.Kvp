@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Configurable custom user properties for cloudscribe core using per tenant or global configuration based custom proprties with key/value storage</Description>
-    <Version>8.0.0</Version>
+    <Version>8.0.1</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Joe Audette</Authors>
     <PackageTags>cloudscribe;userprofile;customization</PackageTags>
@@ -24,8 +24,8 @@
   <ItemGroup>
     <PackageReference Include="cloudscribe.Versioning" Version="8.0.0" />
     <PackageReference Include="cloudscribe.Core.Models" Version="8.0.0" />
-    <PackageReference Include="cloudscribe.Core.Identity" Version="8.0.0" />
-    <PackageReference Include="cloudscribe.Core.Web" Version="8.0.0" />
+    <PackageReference Include="cloudscribe.Core.Identity" Version="8.0.1" />
+    <PackageReference Include="cloudscribe.Core.Web" Version="8.0.1" />
 
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />

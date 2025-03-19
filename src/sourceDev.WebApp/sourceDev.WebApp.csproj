@@ -48,7 +48,7 @@
     
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.0" />
 
-    <PackageReference Include="cloudscribe.Core.Web" Version="8.0.0" />
+    <PackageReference Include="cloudscribe.Core.Web" Version="8.0.1" />
     <PackageReference Include="cloudscribe.Core.CompiledViews.Bootstrap5" Version="8.0.0" />
     <PackageReference Include="cloudscribe.Web.StaticFiles" Version="8.0.0" />
 

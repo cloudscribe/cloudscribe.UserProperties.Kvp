@@ -1,5 +1,7 @@
 ﻿@using cloudscribe.UserProperties.Models
 @model cloudscribe.Core.Web.ViewModels.UserAdmin.UserListViewModel
+@using Microsoft.AspNetCore.Mvc.ViewEngines
+@inject ICompositeViewEngine Engine
 @inject ICoreThemeHelper themeHelper
 @inject IStringLocalizer<CloudscribeCore> sr
 @inject IUserPropertyService _userPropertyService
@@ -43,6 +45,10 @@
     </div>
 </div>
 <partial name="UserListPartial_kvp" model="Model" />
+@if (Engine.FindView(ViewContext, "UserExportPartial", false).Success)
+{ // only show export button if the view exists in cloudscribe.core.compiledviews.bootstrap5 >= 8.0.18
+    <partial name="UserExportPartial" model="Model" />
+}
 @section SideNav {
     <partial name="AdminSideNav" />
 }
