@@ -12,6 +12,11 @@ One of my clients had multiple upcoming projects that need custom registration f
 
 4. Custom implementations of [IHandleCustomRegistration](https://github.com/joeaudette/cloudscribe.Entropy/blob/master/solutions/cloudscribe.CustomRegistration.Kvp/src/cloudscribe.UserProperties.Web.Kvp/KvpRegistrationHandler.cs), [IHandleCustomUserInfo](https://github.com/joeaudette/cloudscribe.Entropy/blob/master/solutions/cloudscribe.CustomRegistration.Kvp/src/cloudscribe.UserProperties.Web.Kvp/KvpUserInfoHandler.cs), and [IHandleCustomUserInfoAdmin](https://github.com/joeaudette/cloudscribe.Entropy/blob/master/solutions/cloudscribe.CustomRegistration.Kvp/src/cloudscribe.UserProperties.Web.Kvp/KvpUserInfoAdminHandler.cs) interfaces from cloudscribe Core process the additional form fields
 
+### Build status
+
+<!-- Making badges prettier: -->
+[![CS Build Devel](https://img.shields.io/github/actions/workflow/status/cloudscribe/cloudscribe.UserProperties.Kvp/cloudscribe-develop.yml?branch=develop&event=push&style=for-the-badge&label=🚀%20Develop%20Branch)](https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp/actions/workflows/cloudscribe-develop.yml)
+
 ### Credits
 
 ![esdm logo](https://www.cloudscribe.com/media/images/esdm-banner.png)
