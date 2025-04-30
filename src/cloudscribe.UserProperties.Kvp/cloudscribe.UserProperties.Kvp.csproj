@@ -25,7 +25,7 @@
     <PackageReference Include="cloudscribe.Versioning" Version="8.1.0" />
     <PackageReference Include="cloudscribe.Core.Models" Version="8.1.0" />
     <PackageReference Include="cloudscribe.Core.Identity" Version="8.1.0" />
-    <PackageReference Include="cloudscribe.Core.Web" Version="8.1.0" />
+    <PackageReference Include="cloudscribe.Core.Web" Version="8.1.1" />
 
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
