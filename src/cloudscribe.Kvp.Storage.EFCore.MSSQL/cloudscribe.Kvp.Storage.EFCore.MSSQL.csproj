@@ -2,7 +2,7 @@
 
   <PropertyGroup>
   <Description>Entity Framework Core common classes for cloudscribe.Kvp</Description>
-    <Version>8.1.0</Version>
+    <Version>8.2.0</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Joe Audette</Authors>
 	  <PackageTags>cloudscribe;kvp;commands;queries;ef</PackageTags>
@@ -23,7 +23,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="cloudscribe.Versioning" Version="8.1.0" />
+    <PackageReference Include="cloudscribe.Versioning" Version="8.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
