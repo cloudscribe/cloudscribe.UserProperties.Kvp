@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>model classes for key/value storage</Description>
-    <Version>8.3.0</Version>
+    <Version>8.4.0</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Joe Audette</Authors>
     <PackageTags>cloudscribe;kvp</PackageTags>
@@ -12,15 +12,17 @@
 
     <RepositoryUrl>https://github.com/cloudscribe/cloudscribe.UserProperties.Kvp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="icon.png" Pack="true" PackagePath="\" />
+    <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="cloudscribe.Core.Models" Version="8.3.0" />
-    <PackageReference Include="cloudscribe.Pagination.Models" Version="8.3.0" />
+    <PackageReference Include="cloudscribe.Core.Models" Version="8.4.0" />
+    <PackageReference Include="cloudscribe.Pagination.Models" Version="8.4.0" />
   </ItemGroup>
   
 </Project>
