@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{26B35914-6144-495B-AE28-CF5E21CA3B94}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8B2A2B3C-4D5E-6F7A-8B9C-0D1E2F3A4B5C}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Models", "src\cloudscribe.Kvp.Models\cloudscribe.Kvp.Models.csproj", "{C2AB7956-D813-4F6B-839E-0BDBECD3733F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.Storage.EFCore.Common", "src\cloudscribe.Kvp.Storage.EFCore.Common\cloudscribe.Kvp.Storage.EFCore.Common.csproj", "{26280B75-9A2F-43C2-BCA2-2E1828C72B27}"
@@ -28,6 +30,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sourceDev.WebApp", "src\sourceDev.WebApp\sourceDev.WebApp.csproj", "{2C31220E-680F-4F1E-9950-0F004CDA3904}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Kvp.Views.BS5", "src\cloudscribe.Kvp.Views.BS5\cloudscribe.Kvp.Views.BS5.csproj", "{CCFCCC62-B27E-4CC5-979F-A41E9988B018}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Kvp.UnitTests", "tests\cloudscribe.Kvp.UnitTests\cloudscribe.Kvp.UnitTests.csproj", "{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,6 +187,18 @@ Global
 		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Release|x64.Build.0 = Release|Any CPU
 		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Release|x86.ActiveCfg = Release|Any CPU
 		{CCFCCC62-B27E-4CC5-979F-A41E9988B018}.Release|x86.Build.0 = Release|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Debug|x64.Build.0 = Debug|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Debug|x86.Build.0 = Debug|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Release|x64.ActiveCfg = Release|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Release|x64.Build.0 = Release|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Release|x86.ActiveCfg = Release|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -200,6 +216,7 @@ Global
 		{DABDCF8A-5FBC-4192-99F5-3FE9125FF2D9} = {26B35914-6144-495B-AE28-CF5E21CA3B94}
 		{2C31220E-680F-4F1E-9950-0F004CDA3904} = {26B35914-6144-495B-AE28-CF5E21CA3B94}
 		{CCFCCC62-B27E-4CC5-979F-A41E9988B018} = {26B35914-6144-495B-AE28-CF5E21CA3B94}
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A} = {8B2A2B3C-4D5E-6F7A-8B9C-0D1E2F3A4B5C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B5E647E9-136D-490E-A9FF-8E895ECC87E4}
