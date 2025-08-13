@@ -1,4 +1,5 @@
-﻿using cloudscribe.Core.Web.ExtensionPoints;
+﻿using cloudscribe.Core.Models.EventHandlers;
+using cloudscribe.Core.Web.ExtensionPoints;
 using cloudscribe.Kvp.Models;
 using cloudscribe.UserProperties.Models;
 using cloudscribe.UserProperties.Services;
@@ -21,6 +22,10 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddScoped<IHandleCustomRegistration, KvpRegistrationHandler>();
             services.TryAddScoped<IHandleCustomUserInfo, KvpUserInfoHandler>();
             services.TryAddScoped<IHandleCustomUserInfoAdmin, KvpUserInfoAdminHandler>();
+            
+            // Register post-delete handler for automatic KVP cleanup when users are deleted
+            services.TryAddScoped<IHandleUserPostDelete, KvpUserPostDeleteHandler>();
+            
             services.AddScoped<IVersionProvider, VersionProvider>();
 
 
