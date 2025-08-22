@@ -49,14 +49,14 @@ namespace Microsoft.Extensions.DependencyInjection
 
                             break;
 
-                        case "pgsql-old":
-                            var pgConnection = config.GetConnectionString("PostgreSqlEntityFrameworkConnectionString");
-                            services.AddCloudscribeCoreEFStoragePostgreSql(pgConnection);
-                            services.AddCloudscribeLoggingEFStoragePostgreSql(pgConnection);
-                            services.AddCloudscribeSimpleContentEFStoragePostgreSql(pgConnection);
-                            services.AddCloudscribeKvpEFStoragePostgreSql(pgConnection);
+                        //case "pgsql-old":
+                        //    var pgConnection = config.GetConnectionString("PostgreSqlEntityFrameworkConnectionString");
+                        //    services.AddCloudscribeCoreEFStoragePostgreSql(pgConnection);
+                        //    services.AddCloudscribeLoggingEFStoragePostgreSql(pgConnection);
+                        //    services.AddCloudscribeSimpleContentEFStoragePostgreSql(pgConnection);
+                        //    services.AddCloudscribeKvpEFStoragePostgreSql(pgConnection);
 
-                            break;
+                        //    break;
 
                         case "pgsql":
                             var pgsConnection = config.GetConnectionString("PostgreSqlConnectionString");
