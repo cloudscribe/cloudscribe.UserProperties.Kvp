@@ -259,3 +259,9 @@ paket-files/
 /src/sourceDev.WebApp/sitefiles/s1/themes/custom1/wwwroot/css/style.css
 /src/sourceDev.WebApp/sitefiles/s1/themes/custom1/wwwroot/css/style.min.css
 **/attic
+
+# Claude working files
+CLAUDE.md
+CLAUDE_*.md
+.claude/
+.claude-transfer/
